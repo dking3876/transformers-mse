@@ -1,0 +1,346 @@
+#Common Card Fields
+styling field:
+	type: boolean
+	name: use faction fonts
+styling field:
+	type: boolean
+	name: alternate
+	description: Is this card a weaponizer or other alternate mode? Best bet to only apply to this card.
+	initial: no
+styling field:
+	type: choice
+	name: overlay
+	description: Use an overlay?
+	choice: none
+	choice: foil
+	choice: draft
+	initial: none
+###################################################################################
+# Card Fields
+card style:
+	background image:
+		left:	0
+		top:	0
+		width:	750
+		height:	1050
+		z index: -5
+		default: { battlecard_blend() }
+	background:
+		left:	0
+		top:	-4
+		width:	750
+		height:	1050
+		z index: 0
+		render style: text
+		popup style: in place
+		font:
+			name: Catamaran
+			size: -1
+		choice images:
+			normal: battlecard_normal.png
+			autobot: battlecard_autobot.png
+			decepticon: battlecard_decepticon.png
+			mercenary: battlecard_mercenary.png
+			unicron: battlecard_unicron.png
+			maximal: battlecard_maximal.png
+			predacon: battlecard_predacon.png
+	image:
+		left:	30
+		top:	146
+		width:	690
+		height:	525
+		z index: 1
+
+################################################################################### Card Name Fields
+	name:
+		left: 70
+		top : 72
+		width: 530
+		height: 70
+		alignment: bottom left shrink-overflow
+		padding bottom: 0
+		z index: 3
+		font:
+			name: Just_Dance_Bold
+			size: 70
+			scale down to: 12
+			color: rgb(0,0,0)
+			shadow color: rgb(255,255,255)
+			shadow displacement x: 2
+			shadow displacement y: 2
+	cybertron:
+		top: 40
+		left: 70
+		height: 32
+		width: 530
+		alignment: middle right shrink-overflow
+		visible: true
+		z index: 1
+		font:
+			name: { getFont() }
+			size: 18
+			scale down to: 12
+			color: rgb(128,128,128)
+			shadow color: rgb(255,255,255)
+			shadow displacement x: 2
+			shadow displacement y: 2
+################################################################################### Pips
+	master_pip:
+		left:	640
+		top:	34
+		width:	0
+		height:	0
+		visible: false
+		font:
+			name: Nunito
+			size: -1
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+	pip_one:
+		left: 642
+		top: 34
+		width:	72
+		height:	72
+		render style: text
+		visible: true
+		include file: /transformers-symbols.mse-symbol-font/pips
+		z index: 2
+		font:
+			name: Nunito
+			size: -1
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+	pip_one_a:
+		left: 642
+		top: 34
+		width:	72
+		height:	72
+		render style: image
+		visible: true
+		include file: /transformers-symbols.mse-symbol-font/pips
+		z index: 2
+
+	pip_two:
+		left: 642
+		top: 86
+		width:	72
+		height:	72
+		render style: text
+		visible: true
+		include file: /transformers-symbols.mse-symbol-font/pips
+		z index: 3
+		font:
+			name: Nunito
+			size: -1
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+	pip_two_a:
+		left: 642
+		top: 86
+		width:	72
+		height:	72
+		render style: image
+		visible: true
+		include file: /transformers-symbols.mse-symbol-font/pips
+		z index: 2
+
+	pip_three:
+		left: 642
+		top: 138
+		width:	72
+		height:	72
+		render style: text
+		visible: true
+		include file: /transformers-symbols.mse-symbol-font/pips
+		z index: 3
+		font:
+			name: Nunito
+			size: -1
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+	pip_three_a:
+		left: 642
+		top: 138
+		width:	72
+		height:	72
+		render style: image
+		visible: true
+		include file: /transformers-symbols.mse-symbol-font/pips
+		z index: 3
+################################################################################### Card Text
+	upgrade_subtype:
+		left:	205
+		top:	630
+		width:	200
+		height:	20
+		z index: 2
+		visible: { isUpgrade() }
+		alignment: left middle shrink-overflow
+		font:
+			name: Catamaran Heavy
+			style: italic
+			size: 18
+			weight: bold
+			color: rgb(255,255,255)
+	card_text:
+		left:	62.5
+		top:	690
+		width:	620
+		height:	250
+		alignment: center middle shrink-overflow
+		line height soft: .75
+		padding bottom: 0
+		z index: 2
+		font:
+			name: Catamaran
+			size: 20
+			weight: Normal
+			color: rgb(0,0,0)
+			scale down to: 16
+		symbol font:
+			name: transformers-symbols
+			size: 35
+			alignment: middle center
+
+################################################################################### Bottom Bar
+	stars:
+		left:	30
+		top:	973
+		width:	96
+		height:	48
+		z index: 1
+		alignment: left bottom shrink-overflow
+		font:
+			name: Nunito Light
+			size: 14
+			weight: bold
+			color: rgb(255,255,255)
+		symbol font:
+			name: transformers-star-font
+			size: 60
+			alignment: middle center
+	set_icon:
+		left: 395
+		top: 977
+		height: 48
+		width: 48
+		visible: { set.display_collector_info }
+		z index: 3
+		render style: image
+		image: { set.set_symbol }
+	set_name:
+		left: 450
+		top: 996
+		height: 24
+		width: 72
+		z index: 2
+		alignment: left middle shrink-overflow
+		visible: { set.display_collector_info }
+		font:
+			name: Nunito
+			size: 12
+			scale down to: 10
+			weight: bold
+			color: rgb(255,255,255)
+
+	rarity text:
+		left:	188
+		top:	985
+		width:	64
+		height:	32
+		z index: 2
+		alignment: right middle shrink-overflow
+		visible: true
+		font:
+			name: Nunito
+			size: 24
+			weight: bold
+			color: rgb(255,255,255)
+	rarity:
+		left:	188
+		top:	985
+		width:	64
+		height:	32
+		z index: 2
+		alignment: right middle shrink-overflow
+		visible: true
+		render style: text
+		font:
+			name: Nunito
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	collector_line_1:
+		left:	262
+		top:	992
+		width:	72
+		height:	32
+		z index: 1
+		alignment: right bottom shrink-overflow
+		visible: { set.display_collector_info }
+		font:
+			name: Nunito Bold
+			size: 24
+			weight: bold
+			color: rgb(255,255,255)
+	collector_line_2:
+		left:	334
+		top:	989
+		width:	72
+		height:	32
+		z index: 1
+		alignment: left bottom shrink-overflow
+		visible: { set.display_collector_info }
+		font:
+			name: Nunito Bold
+			size: 16
+			weight: bold
+			color: rgb(255,255,255)
+	artist:
+		left:	530
+		top:	978
+		width:	190
+		height:	20
+		z index: 1
+		visible: true
+		alignment: right middle shrink-overflow
+		font:
+			name: Nunito Light
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	copyright:
+		left:	530
+		top:	1001
+		width:	190
+		height:	20
+		z index: 1
+		visible: true
+		alignment: right middle shrink-overflow
+		font:
+			name: Nunito Light
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+################################################################################### Exra Card Fields
+extra card field:
+	type: choice
+	name: overlay layer
+	choice: overlay
+	editable: false
+
+extra card style:
+	overlay layer:
+		left: 0
+		top : 0
+		width: { if styling.overlay=="none" then 0 else 750 }
+		height: { if styling.overlay=="none" then 0 else 1050 }
+		z index: 8
+		render style: image
+		choice images:
+			overlay: { if styling.overlay != "none" then "/transformers-common.mse-include/"+styling.overlay+".png" }
+		visible: { if styling.overlay=="none" then "false" else "true" }

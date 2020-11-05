@@ -1,0 +1,37 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Secret Action Battle Cards
+short name: secret actions
+icon: card-sample.jpg
+installer group: transformers/actions/secret actions
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 750
+card height: 1050
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "action" }
+
+#Include common frame components...
+include file: /transformers-common.mse-include/battlecards
+
+# Unique Card fields
+card style:
+
+# Unique Card Face Fields
+	image:
+		mask: secretaction_artwork_mask.png
+	card_text:
+		left: 235
+		width: 448

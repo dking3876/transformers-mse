@@ -1,0 +1,151 @@
+symbol:
+	code: Aerialbot
+	image: script: invert_symbol("theme_aerialbot.png")
+symbol:
+	code: Air Strike Patrol
+	image: script: invert_symbol("theme_air_strike_patrol.png")
+symbol:
+	code: Battle Master
+	image: script: invert_symbol("theme_battle_master.png")
+symbol:
+	code: Battle Patrol
+	image: script: invert_symbol("theme_battle_patrol.png")
+symbol:
+	code: Beast
+	image: script: invert_symbol("theme_beast.png")
+symbol:
+	code: Boat
+	image: script: invert_symbol("theme_boat.png")
+symbol:
+	code: Car
+	image: script: invert_symbol("theme_car.png")
+symbol:
+	code: Constructicon
+	image: script: invert_symbol("theme_constructicon.png")
+symbol:
+	code: Dinobot
+	image: script: invert_symbol("theme_dinobot.png")
+symbol:
+	code: Dreadwing
+	image: script: invert_symbol("theme_dreadwing.png")
+symbol:
+	code: Firecon
+	image: script: invert_symbol("theme_firecon.png")
+symbol:
+	code: Guardian
+	image: script: invert_symbol("theme_guardian.png")
+symbol:
+	code: Helicopter
+	image: script: invert_symbol("theme_helicopter.png")
+symbol:
+	code: Insecticon
+	image: script: invert_symbol("theme_insecticon.png")
+symbol:
+	code: Junkion
+	image: script: invert_symbol("theme_junkion.png")
+symbol:
+	code: Leader
+	image: script: invert_symbol("theme_leader.png")
+symbol:
+	code: Melee
+	image: script: invert_symbol("theme_melee.png")
+symbol:
+	code: Mini-cassette
+	image: script: invert_symbol("theme_mini-cassette.png")
+symbol:
+	code: Motorcycle
+	image: script: invert_symbol("theme_motorcycle.png")
+symbol:
+	code: Off-road Patrol
+	image: script: invert_symbol("theme_off-road_patrol.png")
+symbol:
+	code: Omnibot
+	image: script: invert_symbol("theme_omnibot.png")
+symbol:
+	code: Planet
+	image: script: invert_symbol("theme_planet.png")
+symbol:
+	code: Plane
+	image: script: invert_symbol("theme_plane.png")
+symbol:
+	code: Predacon
+	image: script: invert_symbol("theme_predacon.png")
+symbol:
+	code: Quintesson
+	image: script: invert_symbol("theme_quintesson.png")
+symbol:
+	code: Ranged
+	image: script: invert_symbol("theme_ranged.png")
+symbol:
+	code: Rescue Patrol
+	image: script: invert_symbol("theme_rescue_patrol.png")
+symbol:
+	code: Sentinel
+	image: script: invert_symbol("theme_sentinel.png")
+symbol:
+	code: Spaceship
+	image: script: invert_symbol("theme_spaceship.png")
+symbol:
+	code: Specialist
+	image: script: invert_symbol("theme_specialist.png")
+symbol:
+	code: Sports Car Patrol
+	image: script: invert_symbol("theme_sports_car_patrol.png")
+symbol:
+	code: Spy Patrol
+	image: script: invert_symbol("theme_spy_patrol.png")
+symbol:
+	code: Stunticon
+	image: script: invert_symbol("theme_stunticon.png")
+symbol:
+	code: Tank
+	image: script: invert_symbol("theme_tank.png")
+symbol:
+	code: Titan Master
+	image: script: invert_symbol("theme_titan_master.png")
+symbol:
+	code: Titan
+	image: script: invert_symbol("theme_titan.png")
+symbol:
+	code: Truck
+	image: script: invert_symbol("theme_truck.png")
+symbol:
+	code: Weaponizer
+	image: script: invert_symbol("theme_weaponizer.png")
+symbol:
+	code: Autobot
+	image: insignia-autobot.png
+symbol:
+	code: Decepticon
+	image: insignia-decepticon.png
+symbol:
+	code: Mercenary
+	image: insignia-mercenary.png
+symbol:
+	code: Unicron
+	image: insignia-unicron.png
+symbol:
+	code: Maximal
+	image: insignia-maximal.png
+######################################################## New/Original Themes/Factions
+symbol:
+	code: Minicon
+	image: script: invert_symbol("theme_minicon.png")
+symbol:
+	code: Seacon
+	image: script: invert_symbol("theme_seacon.png")
+symbol:
+	code: Technobot
+	image: script: invert_symbol("theme_technobot.png")
+symbol:
+	code: Wrecker
+	image: script: invert_symbol("theme_wrecker.png")
+symbol:
+	code: Protectabot
+	image: script: invert_symbol("theme_protectabot.png")
+symbol:
+	code: Terrorcon
+	image: script: invert_symbol("theme_terrorcon.png")
+symbol:
+	code: Six Clan
+	image: script: invert_symbol("theme_six_clan.png")

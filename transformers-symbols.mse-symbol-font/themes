@@ -1,0 +1,50 @@
+#Theme Images
+
+choice images:
+	none: /transformers-symbols.mse-symbol-font/pip_none.png
+	aerialbot: /transformers-symbols.mse-symbol-font/theme_aerialbot.png
+	air strike patrol: /transformers-symbols.mse-symbol-font/theme_air_strike_patrol.png
+	battle master: /transformers-symbols.mse-symbol-font/theme_battle_master.png
+	battle patrol: /transformers-symbols.mse-symbol-font/theme_battle_patrol.png
+	beast: /transformers-symbols.mse-symbol-font/theme_beast.png
+	boat: /transformers-symbols.mse-symbol-font/theme_boat.png
+	car: /transformers-symbols.mse-symbol-font/theme_car.png
+	constructicon: /transformers-symbols.mse-symbol-font/theme_constructicon.png
+	dinobot: /transformers-symbols.mse-symbol-font/theme_dinobot.png
+	dreadwing: /transformers-symbols.mse-symbol-font/theme_dreadwing.png
+	firecon: /transformers-symbols.mse-symbol-font/theme_firecon.png
+	guardian: /transformers-symbols.mse-symbol-font/theme_guardian.png
+	helicopter: /transformers-symbols.mse-symbol-font/theme_helicopter.png
+	insecticon: /transformers-symbols.mse-symbol-font/theme_insecticon.png
+	junkion: /transformers-symbols.mse-symbol-font/theme_junkion.png
+	leader: /transformers-symbols.mse-symbol-font/theme_leader.png
+	melee: /transformers-symbols.mse-symbol-font/theme_melee.png
+	mini-cassette: /transformers-symbols.mse-symbol-font/theme_mini-cassette.png
+	motorcycle: /transformers-symbols.mse-symbol-font/theme_motorcycle.png
+	off-road patrol: /transformers-symbols.mse-symbol-font/theme_off-road_patrol.png
+	omnibot: /transformers-symbols.mse-symbol-font/theme_omnibot.png
+	planet: /transformers-symbols.mse-symbol-font/theme_planet.png
+	plane: /transformers-symbols.mse-symbol-font/theme_plane.png
+	predacon: /transformers-symbols.mse-symbol-font/theme_predacon.png
+	quintesson: /transformers-symbols.mse-symbol-font/theme_quintesson.png
+	ranged: /transformers-symbols.mse-symbol-font/theme_ranged.png
+	rescue patrol: /transformers-symbols.mse-symbol-font/theme_rescue_patrol.png
+	sentinel: /transformers-symbols.mse-symbol-font/theme_sentinel.png
+	spaceship: /transformers-symbols.mse-symbol-font/theme_spaceship.png
+	specialist: /transformers-symbols.mse-symbol-font/theme_specialist.png
+	sports car patrol: /transformers-symbols.mse-symbol-font/theme_sports_car_patrol.png
+	spy patrol: /transformers-symbols.mse-symbol-font/theme_spy_patrol.png
+	stunticon: /transformers-symbols.mse-symbol-font/theme_stunticon.png
+	tank: /transformers-symbols.mse-symbol-font/theme_tank.png
+	titan master: /transformers-symbols.mse-symbol-font/theme_titan_master.png
+	titan: /transformers-symbols.mse-symbol-font/theme_titan.png
+	truck: /transformers-symbols.mse-symbol-font/theme_truck.png
+	weaponizer: /transformers-symbols.mse-symbol-font/theme_weaponizer.png
+	######################################################## New/Original Themes/Factions
+	minicon: /transformers-symbols.mse-symbol-font/theme_minicon.png
+	seacon: /transformers-symbols.mse-symbol-font/theme_seacon.png
+	technobot: /transformers-symbols.mse-symbol-font/theme_technobot.png
+	wrecker: /transformers-symbols.mse-symbol-font/theme_wrecker.png
+	terrorcon: /transformers-symbols.mse-symbol-font/theme_terrorcon.png
+	protectabot: /transformers-symbols.mse-symbol-font/theme_protectabot.png
+	six clan: /transformers-symbols.mse-symbol-font/theme_six_clan.png

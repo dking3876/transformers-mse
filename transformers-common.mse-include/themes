@@ -1,0 +1,137 @@
+#Transformers Themes/Keywords
+
+choice:
+	name: none
+choice:
+	name: aerialbot
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: air strike patrol
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: battle master
+choice:
+	name: battle patrol
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: beast
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: boat
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: car
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: constructicon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: dinobot
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: dreadwing
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: firecon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: guardian
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: helicopter
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: insecticon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: junkion
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: leader
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: melee
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: mini-cassette
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: motorcycle
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: off-road patrol
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: omnibot
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: planet
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: plane
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: predacon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: quintesson
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: ranged
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: rescue patrol
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: sentinel
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: spaceship
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: specialist
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: sports car patrol
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: spy patrol
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: stunticon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: tank
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: titan master
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: titan
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: truck
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: weaponizer
+######################################################## New/Original Themes/Factions
+choice:
+	name: minicon
+choice:
+	name: seacon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: technobot
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: wrecker
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: terrorcon
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: protectabot
+	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: six clan
+	enabled: { if isUpgrade() then "false" else "true" }

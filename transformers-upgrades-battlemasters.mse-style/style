@@ -1,0 +1,132 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Battlemaster Upgrade Cards
+short name: battlemasters
+icon: card-sample.jpg
+installer group: transformers/upgrades/battlemasters
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 750
+card height: 1050
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "upgrade" }
+
+#Include common frame components...
+include file: /transformers-common.mse-include/battlecards
+
+# Card fields
+card style:
+
+	pip_one:
+		visible: false
+	pip_two:
+		visible: false
+	pip_three:
+		visible: false
+
+# Card Face Fields
+	name:
+		width: 640
+		font:
+			color: rgb(255,255,255)
+			shadow color: rgb(0,0,0)
+	cybertron:
+		width: 640
+		left: 35
+	image:
+		mask: battlemaster_artwork_mask.png
+	card_text:
+		top:	690
+		width:	620
+		height:	200
+	master_traits:
+		top: 	160
+		left: 	497
+		height: 32
+		width:  250
+		z index: 3
+	trait_icon_1:
+		left: 497
+		top: 160
+		width: 32
+		height: 32
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: true
+	trait_text_1:
+		left: 537
+		top: 160
+		width: 180
+		height: 25
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_1 != "none" }
+
+	# Attack Boost
+	attack:
+		left:	75
+		top:	890
+		width:	58
+		height:	58
+		z index: 2
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 48
+			weight: bold
+			color: rgb(255,255,255)
+	upgrade_attack:
+		left:	29
+		top:	877
+		width:	222
+		height:	76
+		z index: -3
+		render style: image
+		visible: { card.attack != "" }
+		choice images:
+			normal: /transformers-common.mse-include/upgrade_offense.png
+
+	# Defense Boost
+	defense:
+		left:	590
+		top:	890
+		width:	58
+		height:	58
+		z index: 2
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 48
+			weight: bold
+			color: rgb(255,255,255)
+	upgrade_defense:
+		left:	495
+		top:	877
+		width:	224
+		height:	76
+		z index: -3
+		visible: { card.defense != "" }
+		render style: image
+		choice images:
+			normal: /transformers-common.mse-include/upgrade_defense.png

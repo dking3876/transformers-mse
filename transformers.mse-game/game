@@ -1,0 +1,28 @@
+mse version: 2.1.1
+short name: transformers
+full name: Transformers TCG
+icon: card-back.png
+installer group: transformers/game files/game
+
+version: 2020-09-01
+
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+###############################################################################################
+# Store the growing scripts "off site"
+include file: scripts
+
+include file: set_fields
+
+include file: card_fields
+
+#####################################################################
+#Keywords...
+include file: keywords
+
+#####################################################################
+#For later editions, include files for pack and deck generation
+#include file: pack_items
+#include file: pack_types

@@ -1,0 +1,359 @@
+mse version: 2.1.1
+version: 2020-08-01
+short name: Transformers Symbols
+position hint: 3
+icon: icon_tap.png
+installer group: transformers/symbol fonts/symbols
+
+image font size: 72
+horizontal space: 5
+
+#Include the Theme Icons first...
+include file: theme_pips
+include file: theme_icons
+
+symbol:
+	code: STR
+	image: script: invert_symbol("star.png")
+symbol:
+	code: ST5
+	image: script: invert_symbol("5-star.png")
+symbol:
+	code: S10
+	image: script: invert_symbol("10-star.png")
+symbol:
+	code: ->
+	image: script: invert_symbol("arrow.png")
+symbol:
+	code: T
+	image: script: invert_symbol("icon_tap.png")
+symbol:
+	code: TAP
+	image: script: invert_symbol("icon_tap.png")
+symbol:
+	code: ATK
+	image: script: invert_symbol("icon_attack.png")
+symbol:
+	code: DEF
+	image: script: invert_symbol("icon_defense.png")
+symbol:
+	code: HEL
+	image: script: invert_symbol("icon_health.png")
+symbol:
+	code: AUT
+	image: insignia-autobot.png
+symbol:
+	code: DEC
+	image: insignia-decepticon.png
+symbol:
+	code: MER
+	image: insignia-mercenary.png
+symbol:
+	code: UNI
+	image: insignia-unicron.png
+symbol:
+	code: MAX
+	image: insignia-maximal.png
+symbol:
+	code: PRE
+	image: insignia-predacon.png
+symbol:
+	code: W/O
+	image: pip_wo.png
+symbol:
+	code: W/B
+	image: pip_wb.png
+symbol:
+	code: W/U
+	image: pip_wu.png
+symbol:
+	code: W/G
+	image: pip_wg.png
+symbol:
+	code: O/B
+	image: pip_ob.png
+symbol:
+	code: O/U
+	image: pip_ou.png
+symbol:
+	code: O/G
+	image: pip_og.png
+symbol:
+	code: B/U
+	image: pip_bu.png
+symbol:
+	code: B/G
+	image: pip_bg.png
+symbol:
+	code: U/G
+	image: pip_ug.png
+symbol:
+	code: W
+	image: pip_white.png
+symbol:
+	code: O
+	image: pip_orange.png
+symbol:
+	code: B
+	image: pip_black.png
+symbol:
+	code: U
+	image: pip_blue.png
+symbol:
+	code: G
+	image: pip_green.png
+
+
+
+# Insert-symbol menu
+# Battle Icon Order: <WOBUG>
+insert symbol menu:
+	item: ->
+	item: TAP
+	item: ATK
+	item: DEF
+	item: HEL
+	item:
+		name: stars
+		item: STR
+		item: ST5
+		item: S10
+	item:
+		name: factions
+		item: AUT
+		item: DEC
+		item: MER
+		item: UNI
+		item: MAX
+		item: PRE
+	item:
+		name: normal pips
+		item: W
+		item: O
+		item: B
+		item: U
+		item: G
+	item:
+		name: hybrid color pips
+		item: W/O
+		item: W/B
+		item: W/U
+		item: W/G
+		item: O/B
+		item: O/U
+		item: O/G
+		item: B/U
+		item: B/G
+		item: U/G
+	item:
+		name: hybrid faction pips
+		item:
+			name: black
+			item: black aerialbot
+			item: black air strike patrol
+			item: black battle master
+			item: black battle patrol
+			item: black beast
+			item: black boat
+			item: black car
+			item: black constructicon
+			item: black dinobot
+			item: black dreadwing
+			item: black firecon
+			item: black guardian
+			item: black helicopter
+			item: black insecticon
+			item: black leader
+			item: black melee
+			item: black mini-cassette
+			item: black motorcycle
+			item: black off-road patrol
+			item: black omnibot
+			item: black planet
+			item: black plane
+			item: black predacon
+			item: black ranged
+			item: black rescue patrol
+			item: black sentinel
+			item: black spaceship
+			item: black specialist
+			item: black sports car patrol
+			item: black spy patrol
+			item: black stunticon
+			item: black tank
+			item: black titan
+			item: black truck
+			item: black weaponizer
+			item: black minicon
+			item: black seacon
+			item: black technobot
+			item: black titan master
+			item: black wrecker
+		item:
+			name: blue
+			item: blue aerialbot
+			item: blue air strike patrol
+			item: blue battle master
+			item: blue battle patrol
+			item: blue beast
+			item: blue boat
+			item: blue car
+			item: blue constructicon
+			item: blue dinobot
+			item: blue dreadwing
+			item: blue firecon
+			item: blue guardian
+			item: blue helicopter
+			item: blue insecticon
+			item: blue leader
+			item: blue melee
+			item: blue mini-cassette
+			item: blue motorcycle
+			item: blue off-road patrol
+			item: blue omnibot
+			item: blue planet
+			item: blue plane
+			item: blue predacon
+			item: blue ranged
+			item: blue rescue patrol
+			item: blue sentinel
+			item: blue spaceship
+			item: blue specialist
+			item: blue sports car patrol
+			item: blue spy patrol
+			item: blue stunticon
+			item: blue tank
+			item: blue titan
+			item: blue truck
+			item: blue weaponizer
+			item: blue minicon
+			item: blue seacon
+			item: blue technobot
+			item: blue titan master
+			item: blue wrecker
+		item:
+			name: green
+			item: green aerialbot
+			item: green air strike patrol
+			item: green battle master
+			item: green battle patrol
+			item: green beast
+			item: green boat
+			item: green car
+			item: green constructicon
+			item: green dinobot
+			item: green dreadwing
+			item: green firecon
+			item: green guardian
+			item: green helicopter
+			item: green insecticon
+			item: green leader
+			item: green melee
+			item: green mini-cassette
+			item: green motorcycle
+			item: green off-road patrol
+			item: green omnibot
+			item: green planet
+			item: green plane
+			item: green predacon
+			item: green ranged
+			item: green rescue patrol
+			item: green sentinel
+			item: green spaceship
+			item: green specialist
+			item: green sports car patrol
+			item: green spy patrol
+			item: green stunticon
+			item: green tank
+			item: green titan
+			item: green truck
+			item: green weaponizer
+			item: green minicon
+			item: green seacon
+			item: green technobot
+			item: green titan master
+			item: green wrecker
+		item:
+			name: orange
+			item: orange aerialbot
+			item: orange air strike patrol
+			item: orange battle master
+			item: orange battle patrol
+			item: orange beast
+			item: orange boat
+			item: orange car
+			item: orange constructicon
+			item: orange dinobot
+			item: orange dreadwing
+			item: orange firecon
+			item: orange guardian
+			item: orange helicopter
+			item: orange insecticon
+			item: orange leader
+			item: orange melee
+			item: orange mini-cassette
+			item: orange motorcycle
+			item: orange off-road patrol
+			item: orange omnibot
+			item: orange planet
+			item: orange plane
+			item: orange predacon
+			item: orange ranged
+			item: orange rescue patrol
+			item: orange sentinel
+			item: orange spaceship
+			item: orange specialist
+			item: orange sports car patrol
+			item: orange spy patrol
+			item: orange stunticon
+			item: orange tank
+			item: orange titan
+			item: orange truck
+			item: orange weaponizer
+			item: orange minicon
+			item: orange seacon
+			item: orange technobot
+			item: orange titan master
+			item: orange wrecker
+		item:
+			name: white
+			item: white aerialbot
+			item: white air strike patrol
+			item: white battle master
+			item: white battle patrol
+			item: white beast
+			item: white boat
+			item: white car
+			item: white constructicon
+			item: white dinobot
+			item: white dreadwing
+			item: white firecon
+			item: white guardian
+			item: white helicopter
+			item: white insecticon
+			item: white leader
+			item: white melee
+			item: white mini-cassette
+			item: white motorcycle
+			item: white off-road patrol
+			item: white omnibot
+			item: white planet
+			item: white plane
+			item: white predacon
+			item: white ranged
+			item: white rescue patrol
+			item: white sentinel
+			item: white spaceship
+			item: white specialist
+			item: white sports car patrol
+			item: white spy patrol
+			item: white stunticon
+			item: white tank
+			item: white titan
+			item: white truck
+			item: white weaponizer
+			item: white minicon
+			item: white seacon
+			item: white technobot
+			item: white titan master
+			item: white wrecker

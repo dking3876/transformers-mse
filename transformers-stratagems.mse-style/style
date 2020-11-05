@@ -1,0 +1,160 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Stratagem Battle Cards
+short name: stratagems
+icon: card-sample.jpg
+installer group: transformers/stratagems/stratagems
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 750
+card height: 1050
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "stratagem" }
+
+#Include common frame components...
+include file: /transformers-common.mse-include/battlecards
+
+# Card fields
+card style:
+	name:
+		left: 57
+		top : 47
+		width: 640
+		height: 60
+		alignment:bottom left shrink-overflow
+		padding bottom: 0
+		z index: 2
+		font:
+			name: Just_Dance_Bold
+			size: 60
+			scale down to: 12
+			color: rgb(255,255,255)
+			shadow color: rgb(0,0,0)
+			shadow displacement x: 2
+			shadow displacement y: 2
+	subtitle:
+		left: 57
+		top : 132
+		width: 640
+		height: 30
+		alignment:bottom center shrink-overflow
+		padding bottom: 0
+		z index: 1
+		font:
+			name: Nunito Bold
+			size: 23
+			style: italic
+			scale down to: 12
+			color: { if card.background == "normal" then "rgb(0,0,0)" else "rgb(255,255,255)" }
+			shadow color: { if card.background == "normal" then "rgb(255,255,255)" else "rgb(0,0,0)" }
+			shadow displacement x: 2
+			shadow displacement y: 2
+	cybertron:
+		left: 150
+	pip_one:
+		visible: false
+	pip_two:
+		visible: false
+	pip_three:
+		visible: false
+	image:
+		left:	28
+		top:	105
+		width:	695
+		height:	555
+		mask: stratagem_artwork_mask.png
+		z index: 1
+
+	card_text:
+		left:	62.5
+		top:	690
+		width:	620
+		height:	{ if card.attack != "" or card.health != "" or card.defense!= "" then "200" else "250" }
+
+
+	# Attack Boost
+	attack:
+		left:	75
+		top:	890
+		width:	58
+		height:	58
+		z index: 3
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 48
+			weight: bold
+			color: rgb(255,255,255)
+	upgrade_attack:
+		left:	29
+		top:	877
+		width:	222
+		height:	76
+		z index: -3
+		render style: image
+		visible: { card.attack != "" }
+		choice images:
+			normal: /transformers-common.mse-include/upgrade_offense.png
+	# Defense Boost
+	defense:
+		left:	590
+		top:	890
+		width:	58
+		height:	58
+		z index: 3
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 48
+			weight: bold
+			color: rgb(255,255,255)
+	upgrade_defense:
+		left:	495
+		top:	877
+		width:	224
+		height:	76
+		z index: -3
+		visible: { card.defense != "" }
+		render style: image
+		choice images:
+			normal: /transformers-common.mse-include/upgrade_defense.png
+
+	# Health Boost
+	health:
+		left:	313
+		top:	885
+		width:	58
+		height:	58
+		z index: 3
+		visible: true
+		alignment: right middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 48
+			scale down to: 32
+			weight: bold
+			color: rgb(255,255,255)
+	upgrade_health:
+		left:	266
+		top:	877
+		width:	226
+		height:	76
+		z index: -3
+		render style: image
+		visible: { card.health != "" }
+		choice images:
+			normal: /transformers-common.mse-include/upgrade_health.png

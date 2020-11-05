@@ -1,0 +1,166 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Head Frame
+short name: head
+icon: card-sample.jpg
+installer group: transformers/characters/head
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 750
+card height: 1050
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "character" }
+	invert_symbol := { input }
+
+	to_upper_symbol := { text_filter(input) }
+
+# Styling Field...
+styling field:
+	type: boolean
+	name: underlayer
+	initial: no
+	description: Use an underlayer to add fade to black over artwork?
+
+#Include common frame components...
+include file: /transformers-common.mse-include/battlecards
+
+# Card fields
+card style:
+	background image:
+		height: 1050
+		width: 750
+		mask: script: invert_image("character_artwork_mask.png")
+		default: { character_blend() }
+		z index: -2
+	background:
+		height: 1050
+		width: 750
+		mask: script: invert_image("character_artwork_mask.png")
+		choice images:
+			normal: character_autobot.png
+			autobot: character_autobot.png
+			decepticon: character_decepticon.png
+			mercenary: character_mercenary.png
+			unicron: character_unicron.png
+			maximal: character_maximal.png
+			predacon: character_predacon.png
+		z index: -1
+	name:
+		left: 57
+		top : 47
+		width: 640
+		height: 60
+		alignment:middle center shrink-overflow
+		padding bottom: 0
+		z index: 1
+		visible: true
+		font:
+			name: Just_Dance_Bold
+			size: 60
+			scale down to: 12
+			color: rgb(255,255,255)
+			shadow color: rgb(0,0,0)
+			shadow displacement x: 2
+			shadow displacement y: 2
+		symbol font:
+			name: transformers-symbols
+			size: 90
+			alignment: middle center
+	subtitle:
+		left: 57
+		top : 47
+		width: 640
+		height: 60
+		alignment:middle center shrink-overflow
+		padding bottom: 0
+		z index: 1
+		visible: false
+		font:
+			name: Just_Dance_Bold
+			size: 60
+			scale down to: 12
+			color: rgb(255,255,255)
+			shadow color: rgb(0,0,0)
+			shadow displacement x: 2
+			shadow displacement y: 2
+		symbol font:
+			name: transformers-symbols
+			size: 90
+			alignment: middle center
+	cybertron:
+		left: 700
+		visible: false
+	stars:
+		width: { 160 }
+	pip_one:
+		visible: false
+	pip_two:
+		visible: false
+	pip_three:
+		visible: false
+	image:
+		left:	0
+		top:	0
+		width:	750
+		height:	1050
+		mask: character_artwork_mask.png
+		z index: -5
+	card_mode:
+		left:	305
+		top:	703
+		width:	140
+		height:	28
+		z index: 5
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode_text:
+		left:	305
+		top:	703
+		width:	140
+		height:	28
+		z index:1
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 18
+			weight: bold
+			color: rgb(255,255,255)
+	card_text:
+		top: 745
+		height: 205
+################################################################################### Exra Card Fields
+extra card field:
+	type: choice
+	name: underlay layer
+	choice: normal
+	editable: false
+
+extra card style:
+	underlay layer:
+		left: 0
+		top : 0
+		width: { if styling.underlayer=="no" then 0 else 750 }
+		height: { if styling.underlayer=="no" then 0 else 1050 }
+		z index: -3
+		render style: image
+		choice images:
+			normal: { if styling.underlayer != "none" then "/transformers-common.mse-include/underlayer.png" }
+		visible: { if styling.underlayer=="no" then "false" else "true" }

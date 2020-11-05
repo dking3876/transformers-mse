@@ -1,0 +1,127 @@
+# Keywords
+## Keyword Scripts
+
+has keywords: true
+
+keyword mode:
+	name: Wave 1
+	description: Keywords introduced in Wave 1
+keyword mode:
+	name: Wave 2
+	description: Keywords introduced in Wave 2
+keyword mode:
+	name: Wave 3
+	description: Keywords introduced in Wave 3
+keyword mode:
+	name: Wave 4
+	description: Keywords introduced in Wave 4
+keyword mode:
+	name: Wave 5
+	description: Keywords introduced in Wave 5
+keyword mode:
+	name: Custom
+	description: Custom Keywords
+keyword mode:
+	name: combiner
+	description: Combine keyword
+keyword mode:
+	name: pips
+	description: Reminder text about pips, especially Green and Black
+keyword mode:
+	name: mode
+	description: Reminder text about card modes such as Weaponizer, Battle Master, etc.
+keyword parameter type:
+	name: number
+	match: [X0-9]+
+	refer script:
+		name: normal
+		script: \{{input}\}
+keyword parameter type:
+	name: combiner
+	match: [^(:\n]+
+	separator after is: [.]
+
+#Keywords
+#Wave 1
+keyword:
+	keyword: Bold
+	match: Bold <atom-param>number</atom-param>
+	mode: Wave 1
+	reminder: Flip {param1} more battle cards when attacking. Bold numbers stack.
+keyword:
+	keyword: Pierce
+	match: Pierce <atom-param>number</atom-param>
+	mode: Wave 1
+	reminder: Do at least {param1} damage when attacking, but not more than ATK total. Pierce numbers stack.
+keyword:
+	keyword: Tough
+	match: Tough <atom-param>number</atom-param>
+	mode: Wave 1
+	reminder: Flip {param1} more battle cards when defending. Tough numbers stack.
+#Wave 2
+keyword:
+	keyword: Plan
+	match: Plan <atom-param>number</atom-param>
+	mode: Wave 2
+	reminder: You pay put {param1} cards from your hand on top of your deck.
+#Wave 3
+keyword:
+	keyword: Brave
+	match: Brave
+	mode: Wave 3
+	reminder: Enemies attack this character if able.
+keyword:
+	keyword: Focus
+	match: Focus <atom-param>number</atom-param>
+	mode: Wave 3
+	reminder: Before flipping battle cards when battling -> Look at the top {if param1 == "1" then "card" else param1 + " cards" } of your deck. You may scrap {if param1 == "1" then "it." else "any number of them. Put the rest back in any order." }
+keyword:
+	keyword: Stealth
+	match: Stealth
+	mode: Wave 3
+	reminder: Enemies attack other characters if able.
+#Wave 4
+keyword:
+	keyword: Bounty
+	match: Bounty
+	mode: Wave 4
+	reminder: ...
+keyword:
+	keyword: Safeguard
+	match: Safeguard <atom-param>number</atom-param>
+	mode: Wave 4
+	reminder: Can't take more than {param1} damage while undamaged.
+keyword:
+	keyword: Revenge
+	match: Revenge
+	mode: Wave 4
+	reminder: Use a character's Revenge abilities when it's KO'd.
+#Wave 5
+#Combine Keyword
+keyword:
+	keyword: Combine
+	match: Combine
+	mode: combiner
+	reminder: A combiner begins untappped, has all damage from the combined characters, and keeps 1 Upgrade in each slot.
+#Pips "Keyword"
+#keyword:
+#	keyword: Pips
+#	match: <atom-param>pip</atom-param>
+#	mode: pips
+#	reminder: ...
+#Mode/Master Keywords
+#keyword:
+#	keyword: Battle Master
+#	match: Battle Master
+#	mode: master
+#	reminder: A Battle Master begins in bot mode and can't flip. When it's KO'd, play its Upgrade side.
+#keyword:
+#	keyword: Weaponizer
+#	match: Weaponizer
+#	mode: master
+#	reminder: A Weaponizer begins in bot mode and can't flip. When it's KO'd, play its Upgrade sides.
+#keyword:
+#	keyword: Titan Master
+#	match: Titan Master
+#	mode: master
+#	reminder: This can't flip.

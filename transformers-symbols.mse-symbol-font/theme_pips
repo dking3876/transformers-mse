@@ -1,0 +1,600 @@
+symbol:
+	code: black aerialbot
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_aerialbot.png
+symbol:
+	code: black air strike patrol
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_air_strike_patrol.png
+symbol:
+	code: black battle master
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_battle_master.png
+symbol:
+	code: black battle patrol
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_battle_patrol.png
+symbol:
+	code: black beast
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_beast.png
+symbol:
+	code: black boat
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_boat.png
+symbol:
+	code: black car
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_car.png
+symbol:
+	code: black constructicon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_constructicon.png
+symbol:
+	code: black dinobot
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_dinobot.png
+symbol:
+	code: black dreadwing
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_dreadwing.png
+symbol:
+	code: black firecon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_firecon.png
+symbol:
+	code: black guardian
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_guardian.png
+symbol:
+	code: black helicopter
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_helicopter.png
+symbol:
+	code: black insecticon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_insecticon.png
+symbol:
+	code: black leader
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_leader.png
+symbol:
+	code: black melee
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_melee.png
+symbol:
+	code: black mini-cassette
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_mini-cassette.png
+symbol:
+	code: black motorcycle
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_motorcycle.png
+symbol:
+	code: black off-road patrol
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_off-road_patrol.png
+symbol:
+	code: black planet
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_planet.png
+symbol:
+	code: black omnibot
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_omnibot.png
+symbol:
+	code: black plane
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_plane.png
+symbol:
+	code: black predacon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_predacon.png
+symbol:
+	code: black ranged
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_ranged.png
+symbol:
+	code: black rescue patrol
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_rescue_patrol.png
+symbol:
+	code: black sentinel
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_sentinel.png
+symbol:
+	code: 	black spaceship
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_spaceship.png
+symbol:
+	code: black specialist
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_specialist.png
+symbol:
+	code: black sports car patrol
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_sports_car_patrol.png
+symbol:
+	code: black spy patrol
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_spy_patrol.png
+symbol:
+	code: black stunticon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_stunticon.png
+symbol:
+	code: black tank
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_tank.png
+symbol:
+	code: black titan
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_titan.png
+symbol:
+	code: black truck
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_truck.png
+symbol:
+	code: black weaponizer
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_weaponizer.png
+symbol:
+	code: black minicon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_minicon.png
+symbol:
+	code: black seacon
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_seacon.png
+symbol:
+	code: black technobot
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_technobot.png
+symbol:
+	code: black titan master
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_titan_master.png
+symbol:
+	code: black wrecker
+	image: /transformers-symbols.mse-symbol-font/pip_black_theme_wrecker.png
+symbol:
+	code: blue aerialbot
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_aerialbot.png
+symbol:
+	code: blue air strike patrol
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_air_strike_patrol.png
+symbol:
+	code: blue battle master
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_battle_master.png
+symbol:
+	code: blue battle patrol
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_battle_patrol.png
+symbol:
+	code: blue beast
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_beast.png
+symbol:
+	code: blue boat
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_boat.png
+symbol:
+	code: blue car
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_car.png
+symbol:
+	code: blue constructicon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_constructicon.png
+symbol:
+	code: blue dinobot
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_dinobot.png
+symbol:
+	code: blue dreadwing
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_dreadwing.png
+symbol:
+	code: blue firecon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_firecon.png
+symbol:
+	code: blue guardian
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_guardian.png
+symbol:
+	code: blue helicopter
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_helicopter.png
+symbol:
+	code: blue insecticon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_insecticon.png
+symbol:
+	code: blue leader
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_leader.png
+symbol:
+	code: blue melee
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_melee.png
+symbol:
+	code: blue mini-cassette
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_mini-cassette.png
+symbol:
+	code: blue motorcycle
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_motorcycle.png
+symbol:
+	code: blue off-road patrol
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_off-road_patrol.png
+symbol:
+	code: blue omnibot
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_omnibot.png
+symbol:
+	code: blue planet
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_planet.png
+symbol:
+	code: blue plane
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_plane.png
+symbol:
+	code: blue predacon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_predacon.png
+symbol:
+	code: blue ranged
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_ranged.png
+symbol:
+	code: blue rescue patrol
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_rescue_patrol.png
+symbol:
+	code: blue sentinel
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_sentinel.png
+symbol:
+	code: blue spaceship
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_spaceship.png
+symbol:
+	code: blue specialist
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_specialist.png
+symbol:
+	code: blue sports car patrol
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_sports_car_patrol.png
+symbol:
+	code: blue spy patrol
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_spy_patrol.png
+symbol:
+	code: blue stunticon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_stunticon.png
+symbol:
+	code: blue tank
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_tank.png
+symbol:
+	code: blue titan
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_titan.png
+symbol:
+	code: blue truck
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_truck.png
+symbol:
+	code: blue weaponizer
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_weaponizer.png
+symbol:
+	code: blue minicon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_minicon.png
+symbol:
+	code: blue seacon
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_seacon.png
+symbol:
+	code: blue technobot
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_technobot.png
+symbol:
+	code: blue titan master
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_titan_master.png
+symbol:
+	code: blue wrecker
+	image: /transformers-symbols.mse-symbol-font/pip_blue_theme_wrecker.png
+symbol:
+	code: green aerialbot
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_aerialbot.png
+symbol:
+	code: green air strike patrol
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_air_strike_patrol.png
+symbol:
+	code: green battle master
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_battle_master.png
+symbol:
+	code: green battle patrol
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_battle_patrol.png
+symbol:
+	code: green beast
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_beast.png
+symbol:
+	code: green boat
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_boat.png
+symbol:
+	code: 	green car
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_car.png
+symbol:
+	code: green constructicon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_constructicon.png
+symbol:
+	code: green dinobot
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_dinobot.png
+symbol:
+	code: green dreadwing
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_dreadwing.png
+symbol:
+	code: green firecon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_firecon.png
+symbol:
+	code: green guardian
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_guardian.png
+symbol:
+	code: green helicopter
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_helicopter.png
+symbol:
+	code: green insecticon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_insecticon.png
+symbol:
+	code: green leader
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_leader.png
+symbol:
+	code: green melee
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_melee.png
+symbol:
+	code: green mini-cassette
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_mini-cassette.png
+symbol:
+	code: green motorcycle
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_motorcycle.png
+symbol:
+	code: green off-road patrol
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_off-road_patrol.png
+symbol:
+	code: green omnibot
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_omnibot.png
+symbol:
+	code: green planet
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_planet.png
+symbol:
+	code: green plane
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_plane.png
+symbol:
+	code: green predacon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_predacon.png
+symbol:
+	code: green ranged
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_ranged.png
+symbol:
+	code: green rescue patrol
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_rescue_patrol.png
+symbol:
+	code: green sentinel
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_sentinel.png
+symbol:
+	code: green spaceship
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_spaceship.png
+symbol:
+	code: green specialist
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_specialist.png
+symbol:
+	code: green sports car patrol
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_sports_car_patrol.png
+symbol:
+	code: green spy patrol
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_spy_patrol.png
+symbol:
+	code: green stunticon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_stunticon.png
+symbol:
+	code: green tank
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_tank.png
+symbol:
+	code: green titan
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_titan.png
+symbol:
+	code: green truck
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_truck.png
+symbol:
+	code: green weaponizer
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_weaponizer.png
+symbol:
+	code: green minicon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_minicon.png
+symbol:
+	code: green seacon
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_seacon.png
+symbol:
+	code: green technobot
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_technobot.png
+symbol:
+	code: green titan master
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_titan_master.png
+symbol:
+	code: green wrecker
+	image: /transformers-symbols.mse-symbol-font/pip_green_theme_wrecker.png
+symbol:
+	code: orange aerialbot
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_aerialbot.png
+symbol:
+	code: orange air strike patrol
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_air_strike_patrol.png
+symbol:
+	code: orange battle master
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_battle_master.png
+symbol:
+	code: orange battle patrol
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_battle_patrol.png
+symbol:
+	code: orange beast
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_beast.png
+symbol:
+	code: orange boat
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_boat.png
+symbol:
+	code: orange car
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_car.png
+symbol:
+	code: orange constructicon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_constructicon.png
+symbol:
+	code: orange dinobot
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_dinobot.png
+symbol:
+	code: orange dreadwing
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_dreadwing.png
+symbol:
+	code: orange firecon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_firecon.png
+symbol:
+	code: orange guardian
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_guardian.png
+symbol:
+	code: orange helicopter
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_helicopter.png
+symbol:
+	code: orange insecticon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_insecticon.png
+symbol:
+	code: orange leader
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_leader.png
+symbol:
+	code: orange melee
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_melee.png
+symbol:
+	code: orange mini-cassette
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_mini-cassette.png
+symbol:
+	code: orange motorcycle
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_motorcycle.png
+symbol:
+	code: orange off-road patrol
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_off-road_patrol.png
+symbol:
+	code: orange omnibot
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_omnibot.png
+symbol:
+	code: orange planet
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_planet.png
+symbol:
+	code: orange plane
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_plane.png
+symbol:
+	code: orange predacon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_predacon.png
+symbol:
+	code: orange ranged
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_ranged.png
+symbol:
+	code: orange rescue patrol
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_rescue_patrol.png
+symbol:
+	code: orange sentinel
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_sentinel.png
+symbol:
+	code: orange spaceship
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_spaceship.png
+symbol:
+	code: orange specialist
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_specialist.png
+symbol:
+	code: orange sports car patrol
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_sports_car_patrol.png
+symbol:
+	code: orange spy patrol
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_spy_patrol.png
+symbol:
+	code: orange stunticon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_stunticon.png
+symbol:
+	code: orange tank
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_tank.png
+symbol:
+	code: orange titan
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_titan.png
+symbol:
+	code: orange truck
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_truck.png
+symbol:
+	code: orange weaponizer
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_weaponizer.png
+symbol:
+	code: orange minicon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_minicon.png
+symbol:
+	code: orange seacon
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_seacon.png
+symbol:
+	code: orange technobot
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_technobot.png
+symbol:
+	code: orange titan master
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_titan_master.png
+symbol:
+	code: orange wrecker
+	image: /transformers-symbols.mse-symbol-font/pip_orange_theme_wrecker.png
+symbol:
+	code: white aerialbot
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_aerialbot.png
+symbol:
+	code: white air strike patrol
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_air_strike_patrol.png
+symbol:
+	code: white battle master
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_battle_master.png
+symbol:
+	code: white battle patrol
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_battle_patrol.png
+symbol:
+	code: white beast
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_beast.png
+symbol:
+	code: white boat
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_boat.png
+symbol:
+	code: white car
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_car.png
+symbol:
+	code: white constructicon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_constructicon.png
+symbol:
+	code: white dinobot
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_dinobot.png
+symbol:
+	code: white dreadwing
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_dreadwing.png
+symbol:
+	code: white firecon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_firecon.png
+symbol:
+	code: white guardian
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_guardian.png
+symbol:
+	code: white helicopter
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_helicopter.png
+symbol:
+	code: white insecticon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_insecticon.png
+symbol:
+	code: white leader
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_leader.png
+symbol:
+	code: white melee
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_melee.png
+symbol:
+	code: white mini-cassette
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_mini-cassette.png
+symbol:
+	code: white motorcycle
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_motorcycle.png
+symbol:
+	code: white off-road patrol
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_off-road_patrol.png
+symbol:
+	code: white omnibot
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_omnibot.png
+symbol:
+	code: white planet
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_planet.png
+symbol:
+	code: white plane
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_plane.png
+symbol:
+	code: white predacon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_predacon.png
+symbol:
+	code: white ranged
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_ranged.png
+symbol:
+	code: white rescue patrol
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_rescue_patrol.png
+symbol:
+	code: white sentinel
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_sentinel.png
+symbol:
+	code: white spaceship
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_spaceship.png
+symbol:
+	code: white specialist
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_specialist.png
+symbol:
+	code: white sports car patrol
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_sports_car_patrol.png
+symbol:
+	code: white spy patrol
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_spy_patrol.png
+symbol:
+	code: white stunticon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_stunticon.png
+symbol:
+	code: white tank
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_tank.png
+symbol:
+	code: white titan
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_titan.png
+symbol:
+	code: white truck
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_truck.png
+symbol:
+	code: white weaponizer
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_weaponizer.png
+symbol:
+	code: white minicon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_minicon.png
+symbol:
+	code: white seacon
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_seacon.png
+symbol:
+	code: white technobot
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_technobot.png
+symbol:
+	code: white titan master
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_titan_master.png
+symbol:
+	code: white wrecker
+	image: /transformers-symbols.mse-symbol-font/pip_white_theme_wrecker.png

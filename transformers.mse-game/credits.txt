@@ -1,0 +1,41 @@
+Transformers TCG MSE Template version 1.0
+
+About
+This package is a collection of images, templates, and tools for the development of custom card faces and collections for the now-defunct Transformers TCG.
+
+Template Author: Nate Petersen (https://www.edgeofiacon.com)
+
+Package Contents
+- transformers.mse-game
+- transformers-actions.mse-style
+- transformers-actions-secret-actions.mse-style
+- transformers-characters.mse-style
+- transformers-characters-body.mse-style
+- transformers-characters-combiners.mse-style
+- transformers-characters-energon.mse-style
+- transformers-characters-head.mse-style
+- transformers-characters-micromasters.mse-style
+- transformers-characters-titans.mse-style
+- transformers-stratagems.mse-style
+- transformers-upgrades.mse-style
+- transformers-upgrades-battlemasters.mse-style
+- transformers-star-font.mse-symbol-font
+- transformers-symbols.mse-symbol-font
+
+Fonts Sourced:
+- Transformers glyph fonts (Modern Cybetronic, Destronic, Iaconic; Giedi collection; Bayformance): Neale Davidson (Pixel Sagas)
+- Just Dance: Pria Ravichandran
+- Nunito, Catamaran: FFonts (https://www.ffonts.net)
+
+All fonts licensed for personal use and distribution with accrediation; see "fonts" folder for specific licenses.
+
+Pips, Themes, and Attribute Icons: Andrew J. Aguirre, andrewja (https://www.tfw2005.com/boards/threads/icons-and-symbols.1185737/)
+
+Additional Icons (Manta Ray, CPU, Planet, etc): https://game-icons.net/ (https://game-icons.net/about.html#authors)
+
+Additional game icons used under license via Creative Commons 3.0 "By Attribution" (https://creativecommons.org/licenses/by/3.0/)
+
+Transformers, Optimus Prime, Megatron, Autobots, Decepticons, and associated names, likenesses, and marks TM & Copyright Hasbro;
+Transformers Trading Card Game (TCG), all artwork, icons, likenesses and marks TM & Copyright Wizards of the Coast
+
+Magic Set Editor 2.1.1, developed by Twan van Laarhoven, Sean Hunt, Alissa Rao, licensed under GNU General Public License version 2 or later.

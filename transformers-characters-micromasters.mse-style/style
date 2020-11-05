@@ -1,0 +1,432 @@
+mse version: 2.1.1
+game: transformers
+full name: Micromaster Frame
+short name: micromasters
+icon: card-sample.jpg
+installer group: transformers/characters/micromasters
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 750
+card height: 1050
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "character" }
+	defaultTraitWidth := { 100 }
+
+	getModeFrame := {
+		if card.card_mode == "bot mode minicon" then "/transformers-common.mse-include/micro_card_frame_alt_minicon_2.png"
+		else if card.card_mode == "alt mode minicon" then "/transformers-common.mse-include/micro_card_frame_alt_minicon_1.png"
+		else if isTripleChanger() then "/transformers-common.mse-include/micro_card_frame_alt_2.png"
+		else if (isBattleMaster() or isWeaponizer()) then "/transformers-common.mse-include/micro_card_frame_alt_none.png"
+		else if (card.card_mode == "head mode" or card.card_mode == "limb mode") then "/transformers-common.mse-include/micro_card_frame_alt_none.png"
+		else "/transformers-common.mse-include/micro_card_frame_alt.png"
+	}
+
+#Include common frame components...
+include file: /transformers-common.mse-include/characters
+
+# Card fields
+card style:
+	background image:
+		width: 750
+		height: 1050
+	background:
+		width: 750
+		height: 1050
+	name:
+		top: 30
+		left: 25
+		height: 65
+		width: 715
+		font:
+			size: 72
+	subtitle:
+		top: 95
+		left: 25
+		width: 715
+		font:
+			size: 21
+	cybertron:
+		top: 20
+		left: 50
+		height: 42
+		width: 675
+		font:
+			size: 24
+		visible: true
+################################################################################### Traits
+	master_traits:
+		left: 0
+		top: 134
+		height: 75
+		width: 750
+
+	# Trait 1
+	trait_icon_background_1:
+		left: { traitAnchor_1() - 95 }
+		top:	134
+		height: 60
+		width:	75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_1 != "none" }
+		z index: -2
+	trait_text_background_1:
+		left:	{ traitAnchor_1() - 20 }
+		top:	134
+		width:	{ max(card_style.trait_text_1.content_width, defaultTraitWidth()) + 70  }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_1 != "none" }
+	trait_icon_1:
+		left: { traitAnchor_1() - 61 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_1 != "none" }
+	trait_text_1:
+		left: { traitAnchor_1() - 10 }
+		top:	141
+		width: { max(card_style.trait_text_1.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_1 != "none" }
+
+	#Trait 2
+	trait_icon_background_2:
+		left: { traitAnchor_2() - 75 }
+		top: 134
+		height: 60
+		width: 75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_2 != "none" }
+		z index: -2
+	trait_text_background_2:
+		left: { traitAnchor_2() }
+		top:	134
+		width:	{ max(defaultTraitWidth(), card_style.trait_text_2.content_width + 10 ) + defaultTraitWidth() }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_2 != "none" }
+
+	trait_icon_2:
+		left: { traitAnchor_2() - 41 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+	trait_text_2:
+		left: { traitAnchor_2() + 10 }
+		top:	141
+		width: { max(card_style.trait_text_2.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: -1
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_2 != "none" }
+	#Trait 3
+	trait_icon_background_3:
+		left: { traitAnchor_3() - 75 }
+		top: 134
+		height: 61
+		width: 75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_3 != "none" }
+		z index: -2
+	trait_text_background_3:
+		left: { traitAnchor_3() }
+		top:	134
+		width:	{ max(defaultTraitWidth(), card_style.trait_text_3.content_width + 10 ) + defaultTraitWidth() }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_3 != "none" }
+	trait_icon_3:
+		left: { traitAnchor_3() - 41 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+	trait_text_3:
+		left: { traitAnchor_3() + 10 }
+		top:	141
+		width: { max(card_style.trait_text_3.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: -1
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_3 != "none" }
+	################################################################################### Traits
+	image:
+		width:	750
+		height:	1050
+		mask: character_artwork_mask.png
+	attack:
+		top: 720
+		left: 46
+		height: 48
+		width: 48
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode_text:
+		left:	203
+		top:	745
+		width:	169
+		height:	28
+		z index: 2
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode:
+		left:	203
+		top:	745
+		width:	169
+		height:	28
+		z index: 3
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	hit points:
+		top: 720
+		left: 434
+		height: 48
+		width: 48
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+
+	defense:
+		top: 720
+		left: 609
+		height: 48
+		width: 48
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+
+	card_text:
+		left: { if isTripleChanger() then "120" else "45" }
+		top: 790
+		width: { if isTripleChanger() then "500" else "570" }
+		height: 155
+		font:
+			name: Catamaran
+			size: 18
+			weight: Normal
+			color: rgb(0,0,0)
+			scale down to: 16
+		symbol font:
+			name: transformers-symbols
+			size: 30
+			alignment: middle center
+	alt_card_mode:
+		left:	635
+		top:	788
+		width:	66
+		height:	36
+		z index: 2
+		line height soft: .6
+		line height hard: .6
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(0,0,0)
+	alt_attack:
+		left: 642
+		top: 830
+		width: 26
+		height: 26
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	alt_defense:
+		left: 642
+		top: 861
+		width: 26
+		height: 26
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	#Bottom Line
+	stars:
+		left:	57
+		top:	982
+		width:	450
+		height:	36
+		z index: 1
+		font:
+			name: Nunito
+			size: 18
+			weight: bold
+			color: rgb(255,255,255)
+		symbol font:
+			name: transformers-star-font
+			size: 40
+			alignment: middle center
+	set_icon:
+		left: 28
+		top: 989
+		height: 48
+		width: 48
+		z index: 2
+
+	set_name:
+		left: 100
+		top: 1001
+		height: 24
+		width: 72
+		z index: 2
+		alignment: center middle
+		font:
+			name: Nunito
+			size: 14
+			weight: bold
+			color: rgb(255,255,255)
+	rarity text:
+		left:	195
+		top:	996
+		width:	64
+		height:	32
+		z index: 2
+		alignment: right bottom shrink-overflow
+		font:
+			name: Nunito
+			size: 24
+			weight: bold
+			color: rgb(255,255,255)
+	rarity:
+		left:	195
+		top:	996
+		width:	64
+		height:	32
+		z index: 2
+		alignment: right middle shrink-overflow
+		render style: text
+		font:
+			name: Nunito
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	collector_line_1:
+		left:	262
+		top:	996
+		width:	72
+		height:	32
+		z index: 1
+		alignment: right bottom shrink-overflow
+		font:
+			name: Nunito Bold
+			size: 24
+			weight: bold
+			color: rgb(255,255,255)
+	collector_line_2:
+		left:	337
+		top:	994
+		width:	72
+		height:	32
+		z index: 1
+		alignment: left bottom shrink-overflow
+		font:
+			name: Nunito Bold
+			size: 16
+			weight: bold
+			color: rgb(255,255,255)
+	artist:
+		left:	430
+		top:	995
+		width:	190
+		height:	20
+		z index: 1
+		visible: true
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito Light
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	copyright:
+		left:	430
+		top:	1015
+		width:	190
+		height:	20
+		z index: 1
+		visible: true
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito Light
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+extra card style:
+	alt_card_frame:
+		width: 750
+		height: 1050

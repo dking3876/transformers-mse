@@ -1,0 +1,30 @@
+mse version: 2.1.1
+version: 2020-08-01
+short name: Transformers Stars
+position hint: 3
+icon: star.png
+installer group: transformers/symbol fonts/stars
+
+image font size: 72
+horizontal space: 0
+symbol:
+	code: *
+	image: star.png
+symbol:
+	code: 1
+	image: star.png
+symbol:
+	code: 5
+	image: 5-star.png
+symbol:
+	code: 0
+	image: 10-star.png
+symbol:
+	code: STR
+	image: star.png
+symbol:
+	code: ST5
+	image: 5-star.png
+symbol:
+	code: S10
+	image: 10-star.png

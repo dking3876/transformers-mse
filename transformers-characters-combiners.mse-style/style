@@ -1,0 +1,1019 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Combiner Frame
+short name: combiners
+icon: card-sample.jpg
+installer group: transformers/characters/combiners
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+depends on: transformers-characters-micromasters.mse-style 2020-08-01
+
+card background: black
+card width: 1500
+card height: 1050
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "character" }
+	defaultTraitWidth := { 100 }
+
+	traitAnchor_1b := {
+		751 + card_style.image.width - (max(card_style.trait_text_1b.content_width, defaultTraitWidth()) + 60 )
+	}
+	traitAnchor_2b := {
+		traitAnchor_1b() - (max(card_style.trait_text_2b.content_width, defaultTraitWidth()) + defaultTraitWidth() )
+	}
+	traitAnchor_3b := {
+		traitAnchor_2b() - (max(card_style.trait_text_3b.content_width, defaultTraitWidth()) + defaultTraitWidth() )
+	}
+
+	determineAltSide := {
+		if isBattleMaster() then "upgrade"
+		else if isWeaponizer() then "upgrade"
+		else if isMinicon() then "upgrade"
+		else if isTripleChanger() then "bot\nmode"
+		else "bot\nmode"
+	}
+
+	character_blend := {
+		default := ( if card.background == "" or card.background == "normal" then "autobot" else card.background )
+
+		if card_background_count(card.background) >= 2 then (
+			if chosen(choice:"autobot", input:card.background) then (
+				blend_1 := "/transformers-characters-micromasters.mse-style/character_autobot.png"
+				if chosen(choice:"decepticon", input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_decepticon.png"
+				else if chosen(choice:"mercenary", input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_mercenary.png"
+				else if chosen(choice:"unicron", input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_unicron.png"
+				else if chosen(choice:"maximal",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_maximal.png"
+				else if chosen(choice:"predacon",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_predacon.png"
+				else blend_2 := "/transformers-characters-micromasters.mse-style/character_decepticon.png"
+			) else if chosen(choice:"decepticon", input:card.background) then (
+				blend_1 := "character_decepticon.png"
+				if chosen(choice:"mercenary", input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_mercenary.png"
+				else if chosen(choice:"unicron", input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_unicron.png"
+				else if chosen(choice:"maximal",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_maximal.png"
+				else if chosen(choice:"predacon",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_predacon.png"
+				else blend_2 := "/transformers-characters-micromasters.mse-style/character_mercenary.png"
+			) else if chosen(choice:"mercenary", input:card.background) then (
+				blend_1 := "/transformers-characters-micromasters.mse-style/character_mercenary.png"
+				if chosen(choice:"unicron",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_unicron.png"
+				else if chosen(choice:"maximal",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_maximal.png"
+				else if chosen(choice:"predacon",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_predacon.png"
+			) else if chosen(choice:"unicron", input:card.background) then (
+				blend_1 := "/transformers-characters-micromasters.mse-style/character_unicron.png"
+				if chosen(choice:"maximal",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_maximal.png"
+				else if chosen(choice:"predacon",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_predacon.png"
+			)  else if chosen(choice:"maximal", input:card.background) then (
+				blend_1 := "/transformers-characters-micromasters.mse-style/character_maximal.png"
+				if chosen(choice:"predacon",input:card.background) then blend_2 := "/transformers-characters-micromasters.mse-style/character_predacon.png"
+				else blend_2 := "/transformers-characters-micromasters.mse-style/character_predacon.png"
+			)
+
+			masked_blend(light: blend_1, dark: blend_2, mask: "/transformers-characters-micromasters.mse-style/character_blend_mask.png")
+		) else "/transformers-characters-micromasters.mse-style/character_"+default+".png"
+	}
+
+	getModeFrame := {
+		if card.card_mode == "bot mode minicon" then "/transformers-common.mse-include/micro_card_frame_alt_minicon_2.png"
+		else if card.card_mode == "alt mode minicon" then "/transformers-common.mse-include/micro_card_frame_alt_minicon_1.png"
+		else if isTripleChanger() then "/transformers-common.mse-include/micro_card_frame_alt_2.png"
+		else if (isBattleMaster() or isWeaponizer()) then "/transformers-common.mse-include/micro_card_frame_alt_none.png"
+		else if (card.card_mode == "head mode" or card.card_mode == "limb mode") then "/transformers-common.mse-include/micro_card_frame_alt_none.png"
+		else "/transformers-common.mse-include/micro_card_frame_alt.png"
+	}
+
+	getModeFrame_2 := {
+		if card.card_mode_2 == "bot mode minicon" then "/transformers-common.mse-include/micro_card_frame_alt_minicon_2.png"
+		else if isTripleChanger() then "/transformers-common.mse-include/micro_card_frame_alt_2.png"
+		else if (isBattleMaster() or isWeaponizer()) then "/transformers-common.mse-include/micro_card_frame_alt_none.png"
+		else "/transformers-common.mse-include/micro_card_frame_alt.png"
+	}
+
+	determine_type_switch := { determine_type_2(card.card_mode_2) }
+
+#Include common frame components...
+include file: /transformers-common.mse-include/characters
+
+# Card fields
+card style:
+	background image:
+		width: 750
+		height: 1050
+		mask: script: invert_image("/transformers-characters-micromasters.mse-style/character_artwork_mask.png")
+	background:
+		height: 1050
+		width: 750
+		mask: script: invert_image("/transformers-characters-micromasters.mse-style/character_artwork_mask.png")
+		choice images:
+			normal: /transformers-characters-micromasters.mse-style/character_autobot.png
+			autobot: /transformers-characters-micromasters.mse-style/character_autobot.png
+			decepticon: /transformers-characters-micromasters.mse-style/character_decepticon.png
+			mercenary: /transformers-characters-micromasters.mse-style/character_mercenary.png
+			unicron: /transformers-characters-micromasters.mse-style/character_unicron.png
+			maximal: /transformers-characters-micromasters.mse-style/character_maximal.png
+			predacon: /transformers-characters-micromasters.mse-style/character_predacon.png
+	name:
+		top: 30
+		left: 25
+		height: 65
+		width: 715
+		font:
+			size: 72
+	subtitle:
+		top: 95
+		left: 25
+		width: 715
+		font:
+			size: 21
+	cybertron:
+		top: 20
+		left: 50
+		height: 42
+		width: 675
+		font:
+			size: 24
+		visible: true
+
+################################################################################### Traits
+	master_traits:
+		left: 0
+		top: 134
+		height: 60
+		width: 750
+
+	# Trait 1
+	trait_icon_background_1:
+		left: { traitAnchor_1() - 95 }
+		top:	134
+		height: 60
+		width:	75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_1 != "none" }
+		z index: -2
+	trait_text_background_1:
+		left:	{ traitAnchor_1() - 20 }
+		top:	134
+		width:	{ max(card_style.trait_text_1.content_width, defaultTraitWidth()) + 70  }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_1 != "none" }
+	trait_icon_1:
+		left: { traitAnchor_1() - 61 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_1 != "none" }
+	trait_text_1:
+		left: { traitAnchor_1() - 10 }
+		top:	141
+		width: { max(card_style.trait_text_1.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_1 != "none" }
+
+	#Trait 2
+	trait_icon_background_2:
+		left: { traitAnchor_2() - 75 }
+		top: 134
+		height: 60
+		width: 75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_2 != "none" }
+		z index: -2
+	trait_text_background_2:
+		left: { traitAnchor_2() }
+		top:	134
+		width:	{ max(defaultTraitWidth(), card_style.trait_text_2.content_width + 10 ) + defaultTraitWidth() }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_2 != "none" }
+
+	trait_icon_2:
+		left: { traitAnchor_2() - 41 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+	trait_text_2:
+		left: { traitAnchor_2() + 10 }
+		top:	141
+		width: { max(card_style.trait_text_2.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: -1
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_2 != "none" }
+	#Trait 3
+	trait_icon_background_3:
+		left: { traitAnchor_3() - 75 }
+		top: 134
+		height: 61
+		width: 75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_3 != "none" }
+		z index: -2
+	trait_text_background_3:
+		left: { traitAnchor_3() }
+		top:	134
+		width:	{ max(defaultTraitWidth(), card_style.trait_text_3.content_width + 10 ) + defaultTraitWidth() }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_3 != "none" }
+	trait_icon_3:
+		left: { traitAnchor_3() - 41 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+	trait_text_3:
+		left: { traitAnchor_3() + 10 }
+		top:	141
+		width: { max(card_style.trait_text_3.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: -1
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_3 != "none" }
+	################################################################################### Traits
+	master_traits_2:
+		left: 750
+		top: 134
+		height: 60
+		width: 750
+		z index: 5
+		render style: text
+		popup style: in place
+		include file: /transformers-symbols.mse-symbol-font/themes
+		font:
+			name: Nunito
+			size: -1
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+	trait_icon_background_1b:
+		left: { traitAnchor_1b() - 95 }
+		top:	134
+		height: 60
+		width:	75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_1b != "none" }
+		z index: -2
+	trait_text_background_1b:
+		left:	{ traitAnchor_1b() - 20 }
+		top:	134
+		width:	{ max(card_style.trait_text_1b.content_width, defaultTraitWidth()) + 75  }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_1b != "none" }
+	trait_icon_1b:
+		left: { traitAnchor_1b() - 61 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_1b != "none" }
+	trait_text_1b:
+		left: { traitAnchor_1b() - 10 }
+		top:	141
+		width: { max(card_style.trait_text_1b.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_1b != "none" }
+
+	trait_icon_background_2b:
+		left: { traitAnchor_2b() - 75 }
+		top: 134
+		height: 60
+		width: 75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_2b != "none" }
+		z index: -2
+	trait_text_background_2b:
+		left: { traitAnchor_2b() }
+		top:	134
+		width:	{ max(defaultTraitWidth(), card_style.trait_text_2.content_width + 10 ) + defaultTraitWidth() }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_2b != "none" }
+
+	trait_icon_2b:
+		left: { traitAnchor_2b() - 41 }
+		top:	145
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_2b != "none" }
+	trait_text_2b:
+		left: { traitAnchor_2b() + 10 }
+		top:	141
+		width: { max(card_style.trait_text_2b.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: -1
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_2b != "none" }
+
+	trait_icon_background_3b:
+		left: { traitAnchor_3b() - 75 }
+		top: 134
+		height: 61
+		width: 75
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_icon.png
+		visible: { card.trait_icon_3b != "none" }
+		z index: -2
+	trait_text_background_3b:
+		left: { traitAnchor_3b() }
+		top:	134
+		width:	{ max(defaultTraitWidth(), card_style.trait_text_3b.content_width + 10 ) + defaultTraitWidth() }
+		height:	60
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_3b != "none" }
+	trait_icon_3b:
+		left: { traitAnchor_3b() - 41 }
+		top:	148
+		width:	36
+		height:	36
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_3b != "none" }
+	trait_text_3b:
+		left: { traitAnchor_3b() + 10 }
+		top:	141
+		width: { max(card_style.trait_text_3b.content_width, defaultTraitWidth()) }
+		height:	40
+		z index: -1
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_3b != "none" }
+
+################################################################################### Traits
+
+	image:
+		width:	750
+		height:	1050
+	image_2:
+		top: 0
+		left: 750
+		width:	750
+		height:	1050
+		z index: -5
+	attack:
+		top: 720
+		left: 46
+		height: 48
+		width: 48
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode:
+		left:	203
+		top:	745
+		width:	169
+		height:	28
+		z index: 3
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode_text:
+		left:	203
+		top:	745
+		width:	169
+		height:	28
+		z index: 2
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	hit points:
+		top: 720
+		left: 434
+		height: 48
+		width: 48
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+
+	defense:
+		top: 720
+		left: 609
+		height: 48
+		width: 48
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+	#Alt Mode Box...
+	alt_card_mode:
+		left:	635
+		top:	788
+		width:	66
+		height:	36
+		z index: 2
+		line height soft: .6
+		line height hard: .6
+		visible: { true }
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(0,0,0)
+	alt_attack:
+		left: 642
+		top: 830
+		width: 26
+		height: 26
+		visible: { true }
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	alt_defense:
+		left: 642
+		top: 861
+		width: 26
+		height: 26
+		visible: { true }
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	card_text:
+		left: { if isTripleChanger() then "120" else "45" }
+		top: 790
+		width: { if isTripleChanger() then "500" else "570" }
+		height: 155
+		font:
+			name: Catamaran
+			size: 18
+			weight: Normal
+			color: rgb(0,0,0)
+			scale down to: 16
+		symbol font:
+			name: transformers-symbols
+			size: 30
+			alignment: middle center
+
+	#Bottom Line
+	stars:
+		left: 	{ 57 }
+		top: 	{ 982 }
+		width:	{ 450 }
+		height: { 36 }
+		z index: 3
+		visible: { true }
+		font:
+			name: Nunito
+			size: 18
+			weight: bold
+			color: rgb(255,255,255)
+		symbol font:
+			name: transformers-star-font
+			size: 40
+			alignment: middle center
+	set_icon:
+		left: { 30 + 751 }
+		top: 991
+		height: 48
+		width: 48
+		z index: 2
+		visible: true
+
+	set_name:
+		left: { 87 + 751 }
+		top: 1010
+		height: 24
+		width: 72
+		z index: 2
+		alignment: center middle
+		visible: true
+		font:
+			name: Nunito
+			size: 14
+			weight: bold
+			color: rgb(255,255,255)
+
+	rarity text:
+		left:	944
+		top:	1005
+		width:	64
+		height:	32
+		z index: 2
+		alignment: right bottom shrink-overflow
+		visible: true
+		font:
+			name: Nunito
+			size: 24
+			weight: bold
+			color: rgb(255,255,255)
+	rarity:
+		left: 	944
+		top:	1005
+		width:	64
+		height:	32
+		z index: 3
+		alignment: right bottom shrink-overflow
+		visible: true
+		render style: text
+		font:
+			name: Nunito
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	collector_line_1:
+		left:	{ 1011 }
+		top:	1005
+		width:	72
+		height:	32
+		z index: 1
+		alignment: right bottom shrink-overflow
+		visible: true
+		font:
+			name: Nunito Bold
+			size: 24
+			weight: bold
+			color: rgb(255,255,255)
+	collector_line_2:
+		left:	{ 1083 }
+		top:	1005
+		width:	72
+		height:	32
+		z index: 1
+		alignment: left bottom shrink-overflow
+		visible: true
+		font:
+			name: Nunito Bold
+			size: 16
+			weight: bold
+			color: rgb(255,255,255)
+	artist:
+		left:	1195
+		top:	995
+		width:	190
+		height:	20
+		z index: 1
+		visible: true
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito Light
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	copyright:
+		left:	1195
+		top:	1015
+		width:	190
+		height:	20
+		z index: 1
+		visible: true
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito Light
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	###############################################################################
+	#Center Bar for Second Card...
+	attack_2:
+		top: { card_style.attack.top }
+		left: { card_style.attack.left + 751 }
+		width: { card_style.attack.width }
+		height: { card_style.attack.height }
+		alignment: middle center shrink-overflow
+		padding bottom: 0
+		z index: 1
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode_2:
+		left:	{ 203 + 751 }
+		top:	745
+		width:	169
+		height:	28
+		z index: 3
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: -1
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode_text_2:
+		left:	{ 203 + 751 }
+		top:	745
+		width:	169
+		height:	28
+		z index: 2
+		line height soft: .6
+		line height hard: .6
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(255,255,255)
+	hit_points_2:
+		top: { card_style.hit_points.top }
+		left: { card_style.hit_points.left + 751 }
+		width: { card_style.hit_points.width }
+		height: { card_style.hit_points.height }
+		alignment: middle center shrink-overflow
+		padding bottom: 0
+		z index: 1
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+	defense_2:
+		top: { card_style.defense.top }
+		left: { card_style.defense.left + 751 }
+		width: { card_style.defense.width }
+		height: { card_style.defense.height }
+		alignment: middle center shrink-overflow
+		padding bottom: 0
+		z index: 1
+		font:
+			name: Bayformance
+			size: 38
+			weight: bold
+			color: rgb(255,255,255)
+	###############################################################################
+	#Alt-Mode Box; Move it around for Triple Changers so they maintain the programming and linkage...
+	alt_card_mode_2:
+		left:	{ if isTripleChanger() then "792" else "1386" }
+		top:	{ if isTripleChanger() then "790" else "792" }
+		width:	66
+		height:	36
+		z index: 2
+		line height soft: .6
+		line height hard: .6
+		visible: { "true" }
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(0,0,0)
+	alt_attack_2:
+		left: { if isTripleChanger() then "795" else "1393" }
+		top: { if isTripleChanger() then "830" else "832" }
+		width: 26
+		height: 26
+		visible: { if isBattleMaster() or isWeaponizer() then "false" else "true" }
+		alignment: right middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	alt_defense_2:
+		left: { if isTripleChanger() then "795" else "1393" }
+		top: { if isTripleChanger() then "863" else "861" }
+		width: 26
+		height: 26
+		visible: { if isBattleMaster() or isWeaponizer() then "false" else "true" }
+		alignment: right middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	###############################################################################
+	#Alt Attack & Defense 3
+	alt_attack_3:
+		left: 45
+		top: 830
+		width: 26
+		height: 26
+		visible: { isTripleChanger() and (if isMinicon() then "false" else "true")}
+		alignment: right middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	alt_defense_3:
+		left: 45
+		top: 863
+		width: 26
+		height: 26
+		visible: { isTripleChanger() and (if isMinicon() then "false" else "true")}
+		alignment: right middle shrink-overflow
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	###############################################################################
+	#Alt Attack & Defense 4
+	alt_attack_4:
+		left: 1393
+		top: 832
+		width: 26
+		height: 26
+		alignment: right middle shrink-overflow
+		visible: { isTripleChanger() and (if isMinicon() then "false" else "true")}
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+	alt_defense_4:
+		left: 1393
+		top: 861
+		width: 26
+		height: 26
+		alignment: right middle shrink-overflow
+		visible: { isTripleChanger() and (if isMinicon() then "false" else "true")}
+		font:
+			name: Bayformance
+			size: 26
+			weight: bold
+			color: rgb(0,0,0)
+###############################################################################
+# Truly Extra Card Fields; revised to incorporate duplcate fields defined in game
+extra card field:
+	type: text
+	name: name_2
+	script: forward_editor(field: card.name)
+	identifying: true
+	show statistics: false
+	card list visible: true
+	card list column: 2
+	description: The name of the card
+extra card field:
+	type: text
+	name: subtitle_2
+	script: forward_editor(field: card.subtitle)
+	identifying: true
+	show statistics: false
+	card list visible: true
+	card list column: 2
+	description: The subtitle of the card
+extra card field:
+	type: text
+	name: cybertron_2
+	script: forward_editor(field: card.name)
+	identifying: true
+	show statistics: false
+	card list visible: false
+extra card field:
+	type: text
+	name: card_text_2
+	multi line: true
+	script: addText(input: value, card_name: card.name)
+extra card field:
+	type: image
+	name: background_image_2
+	show statistics: false
+	description: The background image of the card
+extra card field:
+	type: text
+	name: alt_mode_text_3
+	script: to_upper(determineAltSide())
+extra card field:
+	type: text
+	name: alt_mode_text_4
+	script: to_upper(determineAltSide())
+extra card field:
+	type: choice
+	name: alt_card_frame_2
+	choice: normal
+	editable: false
+extra card style:
+	background_image_2:
+		left:	750
+		top:	0
+		width:	750
+		height:	1050
+		mask: { invert_image("/transformers-characters-micromasters.mse-style/character_artwork_mask.png") }
+		default: { character_blend() }
+		z index: -3
+	name_2:
+		top: { card_style.name.top }
+		left: { card_style.name.left + 751 }
+		width: { card_style.name.width }
+		height: { card_style.name.height }
+		alignment:bottom left shrink-overflow
+		padding bottom: 0
+		z index: 2
+		font:
+			name: Just_Dance_Bold
+			size: 72
+			scale down to: 12
+			color: rgb(255,255,255)
+			shadow color: rgb(0,0,0)
+			shadow displacement x: 2
+			shadow displacement y: 2
+	subtitle_2:
+		top: { card_style.subtitle.top }
+		left: { card_style.subtitle.left + 751 }
+		width: { card_style.subtitle.width }
+		height: { card_style.subtitle.height }
+		alignment:bottom left shrink-overflow
+		padding bottom: 0
+		z index: 1
+		font:
+			name: Nunito
+			size: 21
+			style: normal
+			scale down to: 12
+			color: rgb(255,255,255)
+			shadow color: rgb(0,0,0)
+			shadow displacement x: 2
+			shadow displacement y: 2
+	cybertron_2:
+		top: { card_style.cybertron.top }
+		left: { card_style.cybertron.left + 751 }
+		width: { card_style.cybertron.width }
+		height: { card_style.cybertron.height }
+		alignment: { card_style.cybertron.alignment }
+		padding bottom: { card_style.cybertron.padding_bottom }
+		z index: 1
+		font:
+			name: { getFont() }
+			size: 24
+			scale down to: 12
+			color: rgb(128,128,128)
+			shadow color: rgb(255,255,255)
+			shadow displacement x: 2
+			shadow displacement y: 2
+		visible: true
+
+	#Alt-Mode Boxes 3; Triple Changer, left-side Body/Upgrade
+	alt_mode_text_3:
+		left:	42
+		top:	790
+		width:	66
+		height:	36
+		z index: 2
+		line height soft: .6
+		line height hard: .6
+		visible: { isTripleChanger() }
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(0,0,0)
+
+	#Alt-Mode Box 4; Triple Changer, right-side Bot/Upgrade
+	alt_mode_text_4:
+		left:	1390
+		top:	792
+		width:	66
+		height:	36
+		z index: 2
+		line height soft: .6
+		line height hard: .6
+		visible: { isTripleChanger() }
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 12
+			weight: bold
+			color: rgb(0,0,0)
+
+	#Card Text Box Number 2
+	card_text_2:
+		left:	{ card_style.card_text.left + 751 }
+		top:	{ card_style.card_text.top }
+		width:	{ card_style.card_text.width }
+		height:	{ card_style.card_text.height }
+		alignment: center middle shrink-overflow
+		line height soft: .75
+		padding bottom: 0
+		z index: 2
+		font:
+			name: Catamaran
+			size: 18
+			weight: Normal
+			color: rgb(0,0,0)
+			scale down to: 16
+		symbol font:
+			name: transformers-symbols
+			size: 30
+			alignment: middle center
+
+	alt_card_frame:
+		top: 0
+		left: 0
+		height: { 1050 }
+		width: { 750 }
+		render style: image
+		z index: -2
+		choice images:
+			normal: { getModeFrame() }
+		visible: { if hideAltBox() then "false" else "true" }
+	alt_card_frame_2:
+		top: 0
+		left: 750
+		height: { 1050 }
+		width: { 750 }
+		render style: image
+		z index: -2
+		choice images:
+			normal: { getModeFrame_2() }
+		visible: { if hideAltBox() then "false" else "true" }

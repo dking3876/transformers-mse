@@ -1,0 +1,734 @@
+# Functions
+init script:
+	###################################################################################
+	#Some variables tied to the filter scripts...
+
+	faction_names := {"Aerialbot|Air Strike Patrol|Battle Master|Battle Patrol|Beast|Boat|Car|Constructicon|Dinobot|Dreadwing|Firecon|Guardian|Helicopter|Insecticon|Leader|Melee|Mini-cassette|Motorcycle|Off-road Patrol|Omnibot|Planet|Plane|Predacon|Ranged|Rescue Patrol|Sentinel|Spaceship|Specialist|Sports Car Patrol|Spy Patrol|Stunticon|Tank|Titan|Truck|Weaponizer|Seacon|Titan Master|Minicon|Technobot|Protectabot|Terrorcon|Six Clan"}
+	faction_plural := {"Aerialbots|Air Strike Patrols|Battle Masters|Battle Patrols|Beasts|Boats|Cars|Constructicons|Dinobots|Dreadwings|Firecons|Guardians|Helicopters|Insecticons|Leaders|Melees|Mini-cassettes|Motorcycles|Off-road Patrols|Omnibots|Planets|Planes|Predacons|Ranged|Rescue Patrols|Sentinels|Spaceships|Specialists|Sports Car Patrols|Spy Patrols|Stunticons|Tanks|Titans|Trucks|Weaponizers|Seacons|Titan Masters|Minicons|Technobots|Protectabots|Terrorcons|Six Clan"}
+	symbols := { faction_names() }
+
+	#Assign Card Type, changed in style files to reflect the card's type based on style
+	assign_card_type := { "none" }
+
+	#Enable Custom default is "nope"
+	enableCustom := { "false" }
+
+	#Invert Symbol, redefines with style files and allows appropriate colored symbols
+	invert_symbol := { invert_image(input) }
+
+	###################################################################################
+	#Icon Sorting; correctly sort battle icons
+	icon_sort	:= sort_text@(order: "(TWOBUGR)")
+	icon_filter	:= to_upper + { icon_sort() }
+	icon_filter_t	:= replace@(		   # Remove [] used for forcing mana symbols
+				match: "[\\[\\]]",
+				replace: ""
+			) + { icon_filter() }
+
+	icon_context :=
+		"(?ix)				# case insensitive, ignore whitespace
+		 (^|[[:space:]\"(“'])		# start of a word
+		 (  <match>:			# G: something
+		 |  <match>,			# G, tap: something
+		    ([ ](<sym[^>]*>)?[TWOBUG]+(</sym[^>]*>)?,)* # pay X, Y or Z
+		    ([ ](<sym[^>]*>)?[TWOBUG]+(</sym[^>]*>)?[ ](and|or|and/or))* # pay X or Y
+		    [ ]<match>
+		    ([,.)]|$				# (end of word)
+		    |[ ][^ .,]*$			# still typing...
+		    |[ ]( or | and | in | less | more | to ) # or next word is ...
+		    )
+		    )
+		 ";
+
+	###################################################################################
+	#Filter Scripts
+	filter_context :=
+		"(?ix)
+		(^|[[:space:]\"(])
+		(<match>.
+		|<match>,
+		|<match>(^|[[:space:]])
+		)"
+		;
+
+	addText := {
+		#Delete the contents...
+		input := tag_contents(tag: "<atom-addedtext>", contents:{ "" })
+		#Delete the tags....
+		input := remove_tag(tag: "<atom-addedtext>")
+
+		if card.card_type == "upgrade" and (isBattleMaster() or isMinicon() or isWeaponizer()) then (
+			#trace("This is a Battle Master Upgrade!")
+			text_string := input + "<atom-addedtext>\nIf this would leave the battlefield -> Put into your KO area instead.</atom-addedtext>"
+		) else if isBattleMaster() and modeReminder() then (
+			#trace("This is a Battle Master!")
+			text_string := input + "<atom-addedtext>\n(A Battle Master begins in bot mode and can't flip. When its KO'd, play its Upgrade side.)</atom-addedtext>"
+		) else if isMinicon() and modeReminder() then (
+			#trace("This is a Minicon!")
+			text_string := input + "<atom-addedtext>\n(When this Minicon is KO'd, play its Upgrade side.)</atom-addedtext>"
+		) else if isTitanMaster() and modeReminder() then (
+			#trace("This is a Titan Master!")
+			text_string := input + "<atom-addedtext>\n(This can't flip)</atom-addedtext>"
+		) else if isDrone() and modeReminder() then (
+			#trace("This is a Drone!")
+			text_string := input + "<atom-addedtext>\n(This can't flip)</atom-addedtext>"
+		) else if isWeaponizer() and modeReminder() then (
+			#trace("This is a Weaponizer!")
+			text_string := input + "<atom-addedtext>\n(A Weaponizer begins in bot mode and can't flip. When its KO'd, play its Upgrade side.)</atom-addedtext>"
+		) else if card.card_mode == "head mode" then (
+			text_string := input + "<atom-addedtext>\n(This begins in head mode on the alt mode of a character that has a body mode. When that character is KO'd, even if it was your last character, deploy this to the battlefield in bot mode.)</atom-addedtext>"
+		) else if card.card_mode == "human rider" then (
+			text_string := input + "<atom-addedtext>\n(This begins the game under a character in alt mode. When that character flips to bot mode deploy this to the battlefield in Human Mode. If that character is KO'd this character is also KO'd.)</atom-addedtext>"
+		) else if card.card_mode == "human normal" then (
+			text_string := input + "<atom-addedtext>\n(Can't Flip)\n(When the character this began the game under flips to alt mode, put this back under that character in Human Rider Mode.)</atom-addedtext>"
+		) else if card.card_mode == "limb mode" then (
+			text_string := input + "<atom-addedtext>\n(This begins in limb mode on the alt mode of a character that has a body mode. When that character is KO'd, even if it was your last character, deploy this to the battlefield in bot mode.)</atom-addedtext>"
+		) else if isBattleCard() and card.stars != "" and modeReminder() then (
+			text_string := input + "<atom-addedtext>\n(Your team and deck can have 25 STR total.)</atom-addedtext>"
+		) else if isBattleCard() and hasBlackPip() and pipsReminder() then (
+			text_string := input + "<atom-addedtext>\n(For each [B] you flip when attacking, the attacker gets Pierce 1 until end of turn.)</atom-addedtext>"
+		) else if isBattleCard() and hasGreenPip() and pipsReminder() then (
+			text_string := input + "<atom-addedtext>\n(After each battle -> You may swap 1 card from your hand with one of your flipped [G] cards.)</atom-addedtext>"
+		) else if isBattleCard() and hasRedPip() and pipsReminder() then (
+			text_string := input + "<atom-addedtext>\n(After each battle -> For each [R] flipped you may choose a character and repair 1. You cannot choose the same character more than once.)</atom-addedtext>"
+		) else if isBattleCard() and hasHybridPip() and pipsReminder() then (
+			text_string := input + "<atom-addedtext>\n(As you flip a hybrid pip, choose one of its two colors; the card counts as the pip of the chosen color.)</atom-addedtext>"
+		) else if card.card_type == "stratagem" and modeReminder() then (
+			text_string := input + "<atom-addedtext>\n(Play up to one stratagem with the named card or trait. Stratagems begin on the battlefield.)</atom-addedtext>"
+		) else (
+			#trace("This is NOT an upgrade!")
+			text_string := input
+		)
+		text_filter(input: text_string, card_name: card.name)
+	}
+
+	to_upper_symbol := { to_upper(input) }
+
+	text_filter :=
+		# Delete the extra factions...
+		replace_rule(
+			match: faction_plural(),
+			in_context: "<sym-auto><match></sym-auto>",
+			replace: ""
+			) +
+		replace_rule(
+			match: faction_names(),
+			in_context: "<sym-auto><match></sym-auto>",
+			replace: ""
+			) +
+
+		# Remove all automatic tags
+		tag_remove_rule(tag: "<sym-auto>") +
+		tag_remove_rule(tag: "<i-auto>")   +
+		tag_remove_rule(tag: "<b-auto>")   +
+		tag_remove_rule(tag: "<nospellcheck>")	 +
+		tag_remove_rule(tag: "<atom-faction>")	 +
+
+		# Reminder text for keywords
+		expand_keywords@(
+		condition: {
+			correct_case or (mode != "pseudo" and not used_placeholders)
+		}
+		default_expand: {
+			chosen(choice:if correct_case then mode else "lower case", set.automatic_reminder_text)
+		},
+		combine: {
+			keyword  := "<nospellcheck>{keyword}</nospellcheck>"
+			reminder := process_english_hints(reminder)
+			if mode == "pseudo" then "<i-auto>{keyword}</i-auto>"
+			else "<b-auto>{keyword}</b-auto>" + if expand then "<atom-reminder-{mode}> ({reminder})</atom-reminder-{mode}>"
+		}) +
+		# step 2b : move master keywords' reminder text to the end of the line
+		replace@(
+			match: "(<atom-reminder-combiner>(?:(?!<kw-).)*</atom-reminder-combiner></kw[^>]*>)(((?!<atom-reminder| ?<kw-)[^\n(])+)",
+			replace: "\\2\\1"
+		) +
+		# step 2c : remove duplicate reminder text
+		replace@(
+			match: "(<atom-reminder-[^>]*>[^)]+[)]</atom-reminder-[^>]*>)([^\n]+)\\1"
+			replace: "\\2\\1"
+		) +
+		#expand_keywords@(
+		#	default_expand: { set.automatic_reminder_text },
+		#	combine:	{ "<b-auto>{keyword}</b-auto><atom-reminder-{mode}> ({reminder})</atom-reminder-{mode}>" }
+		#	) +
+		# Aadd icon symbols
+		replace@(
+			match: "\\b[TWOBUG/]+\\b",
+			in_context: icon_context,
+			replace: {"<sym-auto>" + icon_filter_t() + "</sym-auto>"} ) +
+		# step 5b : add explict icon
+		replace@(
+			match: "\\[[TWOBUG/]+\\]",
+			replace: {"<sym>" + icon_filter_t() + "</sym>"} ) +
+		# Match Faction Name to bold
+		replace_rule(
+			match: faction_plural(),
+			in_context: filter_context,
+			replace: "<atom-faction><b-auto>&</b-auto><sym-auto>&</sym-auto></atom-faction>"
+			) +
+		replace_rule(
+			match: faction_names(),
+			in_context: filter_context,
+			replace: "<atom-faction><b-auto>&</b-auto><sym-auto>&</sym-auto></atom-faction>"
+			) +
+		# Explict non mana symbols
+		#replace@(
+		#	match: "\\][WOBUG]+\\[",
+		#	replace: {"<nosym>" + icon_filter_t() + "</nosym>"} ) +
+
+		#replace_rule(
+		#	match: "[X0-9]",
+		#	in_context: "(^|[[:space:]])<match>(^|[[:space:]])",
+		#	replace: "<b-auto>&</b-auto>"
+		#) +
+		# Match textual items to symbol font
+		replace_rule(
+			match: "STR|ST5|S10|->|AUT|DEC|MER|UNI|PRE|MAX|ATK|DEF|HEL|TAP",
+			in_context: filter_context,
+			replace: "<sym-auto>&</sym-auto>"
+			) +
+
+		# Replace ~ and CARDNAME
+		replace_rule(
+			match: "~|CARDNAME",
+			in_context: filter_context,
+			replace: "<atom-cardname>&</atom-cardname>"
+			) +
+		replace_rule(
+			match: "SUBTITLE",
+			in_context: filter_context,
+			replace: "<atom-subtitle>&</atom-subtitle>"
+			) +
+
+		# Fill in atom fields
+		tag_contents_rule(
+			tag: "<atom-cardname>",
+			contents: { if card.name=="" then "<b-auto>CARDNAME</b-auto>" else "<b-auto>"+to_title(card.name)+"</b-auto>" }
+			) +
+		tag_contents_rule(
+			tag: "<atom-subtitle>",
+			contents: { if card.subtitle=="" then "<b-auto>SUBTITLE</b-auto>" else "<b-auto>"+to_title(card.subtitle)+"</b-auto>" }
+			) +
+
+		# Bold keywords
+		#replace_rule(
+		# 	match: "<kw[^>]*>[^<]+</kw-a>|<kw[^>]*>[^<]+</kw-A>",
+	 	#	replace: "<b-auto>&</b-auto>") +
+
+		# Italic reminder text
+		replace_rule(
+			match: "[(][^)\n]*[)]?",
+			in_context: "([[:space:]])<match>|<atom-keyword><match>",
+			replace: "<i-auto>&</i-auto>") +
+		# Add Bullet Point
+		replace_rule(
+			match: "\\*",
+			in_context: filter_context,
+			replace: "•")
+
+	star_filter :=
+		tag_contents_rule(tag: "<atom-line>", contents:{ "" }) +
+		tag_remove_rule(tag: "<atom-line>") +
+		tag_remove_rule(tag: "<sym-auto>") +
+		replace_rule(
+			match: "STR STR STR STR STR",
+			in_context: "<match>",
+			replace: "&<atom-line>\\|</atom-line>"
+		) +
+		replace_rule(
+			match: "11111|1 1 1 1 1",
+			in_context: "<match>",
+			replace: "&<atom-line>\\|</atom-line>"
+		) +
+		replace_rule(
+			match: "\\*\\*\\*\\*\\*",
+			in_context: "<match>",
+			replace: "&<atom-line>\\|</atom-line>"
+		) +
+		replace_rule(
+			match: "STR|ST5|S10|1|5|0|\\*",
+			in_context: "<match>",
+			replace: "<sym-auto>&</sym-auto>"
+		)
+
+	cybertron_filter := replace_rule(match:"[^0-9A-Z ]", replace:"")
+
+	set_filter := {
+		if isCharacter() and card.rarity == "starter rare" then
+			{ isCharacter() and card.rarity == "starter rare" }
+		else if isCharacter() and card.rarity == "promo rare" then
+			{ card.rarity == "promo rare" }
+		else if isCharacter() and card.rarity == "box set rare" then
+			{ card.rarity == "box set rare" }
+		else if isCharacter() and card.rarity == "convention rare" then
+			{ card.rarity == "convention rare" }
+		else if card.card_type == "character" and isAlternate() != "true" then
+			{ isCharacter() and card.rarity != "starter rare" and card.rarity != "promo rare"  }
+		else if isCharacter() then
+			{ isCharacter() }
+		else if card.card_type == "action" then
+			{ isBattleCard() }
+		else if card.card_type == "upgrade" and isAlternate() != "true" then
+			{ isBattleCard() }
+		else if card.card_type == "upgrade" and isAlternate() then
+			{ isCharacter() and card.rarity != "starter rare" and card.rarity != "promo rare"  }
+		else if card.card_type == "stratagem" then
+			{ isStratagem() }
+		else if card.card_type == "location" then
+			{ isLocation() }
+		else if card.card_type == "planet" then
+			{ isPlanet() }
+		else if isAlternate() then
+			{ isAlternate() }
+		else
+			{ "false" }
+	}
+
+	###################################################################################
+	#Sorting scripts
+	sort_name :=
+		replace_rule (match: "^(An?) ", replace: "") +
+		to_lower
+
+	sort_index := {
+		if isBattleCard() then "A"
+		else if isCharacter() then "B"
+		else if isStratagem() then "C"
+		else if isLocation() then "D"
+		else if isPlanet() then "E"
+		else if isAlternate() then "Z"
+		else "A"
+	}
+
+	rarity_sort := {
+		if card.rarity == "starter rare" then "B"
+		else if card.rarity == "box set rare" then "C"
+		else if card.rarity == "promo rare" then "D"
+		else if card.rarity == "convention rare" then "E"
+		else "A"
+	}
+
+	theme_sort := {
+		if match(trim(input), match:filter_skill) then "1"
+		else if match(trim(input), match:filter_mode) then "2"
+		else if match(trim(input), match:filter_team) then "3"
+		else if match(trim(input), match:filter_tag) then "4"
+		else if match(trim(input), match:filter_master) then "5"
+		else "5"
+	}
+
+	filter_skill	:= "melee|ranged|specialist"
+	filter_mode	:= "beast|boat|car|helicopter|mini-cassette|motorcycle|planet|plane|spaceship|tank|titan|truck"
+	filter_team	:= "aerialbot|air strike patrol|battle patrol|constructicon|dinobot|dreadwing|firecon|guardian|insecticon|junkion|off road patrol|omnibot|predacon|quintesson|rescue patrol|seacon|sentinel|sports car patrol|spy patrol|stunticon|wrecker"
+	filter_tag	:= "leader"
+	filter_master	:= "battle master|minicon|titan master|weaponizer"
+
+
+	pip_sort := {
+		color := split_text(match: " ", input, include_empty:false)
+		if color[0] == "white"	then "A"
+		else if color[0] == "orange"  then "B"
+		else if color[0] == "black"  then "C"
+		else if color[0] == "blue"  then "D"
+		else if color[0] == "green"  then "E"
+		else if color[0] == "red"  then "F"
+		else if color[0] == "none"  then "Z"
+		else "A"
+	}
+	###################################################################################
+	# isX Scripts; Is the card something?
+	isCharacter := {
+		(card.card_type == "character" and styling.alternate == "no") or
+		(card.card_type == "upgrade" and styling.alternate == "yes")
+	}
+
+	isBotMode := {
+		card.card_type == "character" and
+		 primary_choice(card.card_mode) == "bot mode"
+	}
+
+	isAlternate := {
+		styling.alternate == "yes"
+	}
+
+	notAlternate := {
+		styling.alternate == "no"
+	}
+
+	isDrone := {
+		card.card_mode == "bot mode drone" or
+		card.card_mode == "alt mode drone" or
+		card.card_mode == "character mode" or
+		card.card_mode == "unit mode"
+	}
+
+	isStratagem := { card.card_type == "stratagem" }
+	isAction := { card.card_type == "action" }
+	isLocation := { card.card_type == "location" }
+	isPlanet := { card.card_type == "planet" }
+	isUpgrade := { card.card_type == "upgrade" }
+
+	isBattleMaster := {
+		battlemasterIcon() or
+		card.card_mode == "bot mode battle master"
+	}
+
+	battlemasterIcon := {
+		chosen(choice: "battle master",  card.master_traits) or
+		chosen(choice: "battle master",  card.master_traits_2)
+	}
+
+	isTitanMaster := {
+		titanmasterIcon()
+	}
+
+	titanmasterIcon := {
+		chosen(choice: "titan master",	card.master_traits) or
+		chosen(choice: "titan master",	card.master_traits_2)
+	}
+
+	isWeaponizer := {
+		weaponizerIcon() or
+		card.card_mode == "bot mode weaponizer"
+	}
+
+	weaponizerIcon := {
+		chosen(choice: "weaponizer",  card.master_traits) or
+		chosen(choice: "weaponizer",  card.master_traits_2)
+	}
+
+	isMinicon := {
+		miniconIcon() or
+		card.card_mode == "bot mode minicon" or
+		card.card_mode == "alt mode minicon"
+	}
+
+	miniconIcon := {
+		chosen(choice: "minicon",  card.master_traits) or
+		chosen(choice: "minicon",  card.master_traits_2)
+	}
+
+	isTripleChanger := {
+		card.card_mode == "bot mode triple changer" or
+		card.card_mode == "alt mode alt 1" or
+		card.card_mode == "alt mode alt 2" or
+		card.card_mode == "bot mode minicon" or
+		card.card_mode == "alt mode minicon" or
+		miniconIcon()
+	}
+
+	isSubset := {
+		isCharacter() or
+		isStratagem() or
+		isLocation() or
+		isPlanet()
+	 }
+
+	isBattleCard := {
+		isAction() or
+		(isUpgrade() and styling.alternate == "no" )
+	}
+
+	getPrefix := {
+		if isCharacter() then "T"
+		else if isLocation() then "L"
+		else if isPlanet() then "P"
+		else if isStratagem() then "S"
+		else if isAlternate() then "Z"
+		else ""
+	}
+
+	hideAltBox := {
+		card.card_mode == "combiner mode normal" or
+		card.card_mode == "head mode" or
+		card.card_mode == "limb mode" or
+		isDrone()
+	}
+
+	hideAltStats := {
+		isBattleMaster() or
+		isWeaponizer()
+	}
+
+	#hideAltTitle := {}
+
+	pipsReminder := {
+		chosen(choice: "pips",  set.automatic_reminder_text)
+	}
+
+	modeReminder := {
+		chosen(choice: "mode",  set.automatic_reminder_text)
+	}
+
+	hasBlackPip := {
+		primary_choice(card.pip_one) == "black" or
+		primary_choice(card.pip_two) == "black" or
+		primary_choice(card.pip_three) == "black"
+	}
+	hasGreenPip := {
+		primary_choice(card.pip_one) == "green" or
+		primary_choice(card.pip_two) == "green" or
+		primary_choice(card.pip_three) == "green"
+	}
+	hasRedPip := {
+		primary_choice(card.pip_one) == "red" or
+		primary_choice(card.pip_two) == "red" or
+		primary_choice(card.pip_three) == "red"
+	}
+	hasHybridPip := {
+		primary_choice(card.pip_one) == "hybrid" or
+		primary_choice(card.pip_two) == "hybrid" or
+		primary_choice(card.pip_three) == "hybrid"
+	}
+	###################################################################################
+	#Make various determinations...
+
+	determine_faction := { to_title(card.background) }
+
+	determine_type := {
+		if input == "bot mode normal" then "alt\nmode"
+		else if input == "bot mode battle master" then "upgrade"
+		else if input == "bot mode bot 1" then "bot 2\nmode"
+		else if input == "bot mode bot 2" then "alt\nmode"
+		else if input == "bot mode drone" then ""
+		else if input == "bot mode minicon" then "upgrade"
+		else if input == "bot mode triple changer" then "alt 2\nmode"
+		else if input == "bot mode weaponizer" then "upgrade"
+		else if input == "alt mode normal" then "bot\nmode"
+		else if input == "alt mode alt 1" then "alt 2\nmode"
+		else if input == "alt mode alt 2" then "bot\nmode"
+		else if input == "alt mode body" then "body\nmode"
+		else if input == "alt mode drone" then ""
+		else if input == "alt mode minicon" then "bot\nmode"
+		else if input == "head mode" then ""
+		else if input == "limb mode" then ""
+		else if input == "body mode" then "alt\nmode"
+		else if input == "combiner mode normal" then ""
+		else if input == "combiner mode team" then "team\nmode"
+		else if input == "team mode normal" then "team\nmode"
+		else if input == "team mode combiner" then "combiner\nmode"
+		else if input == "character mode" then ""
+		else if input == "unit mode" then ""
+		else value
+	}
+
+	determine_type_2 := {
+		if input == "bot mode normal" then "alt\nmode"
+		else if input == "bot mode battle master" then "upgrade"
+		else if input == "bot mode bot 1" then "alt\nmode"
+		else if input == "bot mode bot 2" then "bot 1\nmode"
+		else if input == "bot mode drone" then ""
+		else if input == "bot mode minicon" then "alt\nmode"
+		else if input == "bot mode triple changer" then "alt 1\nmode"
+		else if input == "bot mode weaponizer" then "upgrade"
+		else if input == "alt mode normal" then "bot\nmode"
+		else if input == "alt mode alt 1" then "bot\nmode"
+		else if input == "alt mode alt 2" then "alt 1\nmode"
+		else if input == "alt mode body" then "body\nmode"
+		else if input == "alt mode drone" then ""
+		else if input == "alt mode minicon" then "upgrade"
+		else if input == "head mode" then ""
+		else if input == "limb mode" then ""
+		else if input == "body mode" then "alt\nmode"
+		else if input == "combiner mode normal" then ""
+		else if input == "combiner mode team" then "team\nmode"
+		else if input == "team mode normal" then "team\nmode"
+		else if input == "team mode combiner" then "combiner\nmode"
+		else if input == "character mode" then ""
+		else if input == "unit mode" then ""
+		else input
+	}
+
+	determine_type_switch := { determine_type_2(card.card_mode) }
+
+	determine_mode_text := {
+		if input == "bot mode normal" then "bot mode"
+		else if input == "bot mode battle master" then "bot mode"
+		else if input == "bot mode bot 1" then "bot 1 mode"
+		else if input == "bot mode bot 2" then "bot 2 mode"
+		else if input == "bot mode drone" then "bot mode"
+		else if input == "bot mode minicon" then "bot mode"
+		else if input == "bot mode triple changer" then "bot mode"
+		else if input == "bot mode weaponizer" then "bot mode"
+		else if input == "alt mode normal" then "alt mode"
+		else if input == "alt mode alt 1" then "alt 1 mode"
+		else if input == "alt mode alt 2" then "alt 2 mode"
+		else if input == "alt mode body" then "alt mode"
+		else if input == "alt mode drone" then "alt mode"
+		else if input == "alt mode minicon" then "alt mode"
+		else if input == "head mode" then "head mode"
+		else if input == "human rider" then "human rider"
+		else if input == "human normal" then "human"
+		else if input == "limb mode" then "limb mode"
+		else if input == "body mode" then "body mode"
+		else if input == "combiner mode normal" then "combiiner mode"
+		else if input == "combiner mode team" then "combiner mode"
+		else if input == "team mode normal" then "team mode"
+		else if input == "team mode combiner" then "team mode"
+		else if input == "character mode" then "character"
+		else if input == "unit mode" then "unit"
+		else value
+	}
+
+	setCardMode := {
+		if battlemasterIcon() and card.card_mode != "bot mode battle master" then "bot mode battle master"
+		else if miniconIcon() and card.card_mode != "bot mode minicon" then "bot mode minicon"
+		else if weaponizerIcon() and card.card_mode != "bot mode weaponizer" then "bot mode weaponizer"
+		else card.card_mode
+	}
+
+	setTraitIcon := {
+		if input == "bot mode battle master" then "battle master"
+		else if input == "bot mode minicon" then "minicon"
+		else if input == "bot mode weaponizer" then "weaponizer"
+		else "none"
+	}
+
+	###################################################################################
+	#Assign context-specific features like fonts and frames
+	getFont := {
+		if styling.use_faction_fonts == "no" then "Modern Cybertronic"
+		else if card.background == "autobot" then "Modern Iaconic"
+		else if card.background == "decepticon" then "Modern Destronic"
+		else if card.background == "unicron" then "Giedi Ancient Autobot"
+		else if card.background == "maximal" then "Giedi Maximal"
+		else if card.background == "predacon" then "Giedi Predacon"
+		else "Modern Cybertronic"
+	}
+
+	getModeFrame := {
+		if card.card_mode == "bot mode minicon" then "/transformers-common.mse-include/card_frame_alt_minicon_2.png"
+		else if card.card_mode == "alt mode minicon" then "/transformers-common.mse-include/card_frame_alt_minicon_1.png"
+		else if isTripleChanger() then "/transformers-common.mse-include/card_frame_alt_2.png"
+		else if (isBattleMaster() or isWeaponizer()) then "/transformers-common.mse-include/card_frame_alt_none.png"
+		else if (card.card_mode == "head mode" or card.card_mode == "limb mode") then "/transformers-common.mse-include/card_frame_alt_none.png"
+		else "/transformers-common.mse-include/card_frame_alt.png"
+	}
+
+
+	###################################################################################
+	#Trait related variables and scripts
+
+	defaultTraitWidth := { 138 }
+
+	trait_names := { if input != "none" then to_upper(input) else "" }
+
+	traitAnchor_1 := {
+		card_style.image.width - (max(card_style.trait_text_1.content_width, defaultTraitWidth()) + 60 )
+	}
+	traitAnchor_2 := {
+		traitAnchor_1() - (max(card_style.trait_text_2.content_width, defaultTraitWidth()) + defaultTraitWidth() )
+	}
+	traitAnchor_3 := {
+		traitAnchor_2() - (max(card_style.trait_text_3.content_width, defaultTraitWidth()) + defaultTraitWidth() )
+	}
+
+	###################################################################################
+	#Numbering scripts
+
+	card_number := {
+		position (
+			of: card
+			in: set
+			order_by: { sort_index() + rarity_sort() + sort_name(card.name) }
+			filter:   set_filter()
+		) + 1
+	}
+
+	card_count := {
+		number_of_items(
+			in: set,
+			order_by: { sort_index() + rarity_sort() + sort_name(card.name) }
+			filter: set_filter()
+		)
+	}
+
+	getCardString := {
+		if set.use_automatic_numbers == "yes" then (
+			if isBattleCard() then to_string(card_number(), format: "03s")	+ "/"
+			else getPrefix() + to_string(card_number(), format: "02s") + "/"
+		) else input
+	}
+
+	getSetString := {
+		if set.use_automatic_numbers == "yes" then (
+			if isBattleCard() then to_string(card_count(), format: "03s")
+			else getPrefix() + to_string(card_count(), format: "02s")
+		) else input
+	}
+
+	###################################################################################
+	#Assemble Texts...
+
+	rarity_text := {
+		if card.rarity == "common" then "C" + getPrefix()
+		else if card.rarity == "uncommon" then "U" + getPrefix()
+		else if card.rarity == "rare" then "R" + getPrefix()
+		else if card.rarity == "super rare" then "SR" + getPrefix()
+		else if card.rarity == "promo rare" then "P" + getPrefix()
+		else if card.rarity == "starter rare" then "S" + getPrefix()
+		else if card.rarity == "convention rare" then "R" + getPrefix()
+		else if card.rarity == "box set rare" then "R" + getPrefix()
+		else getPrefix()
+	}
+
+	setName := {
+		if set.Set_Name != "" and card.rarity == "box set rare" then set.Set_Name + "A"
+		else if set.Set_Name != "" and card.rarity == "convention rare" then set.Set_Name + "C"
+		else if set.Set_Name != "" and card.rarity == "promo rare" then set.Set_Name + "P"
+		else if set.Set_Name != "" and card.rarity == "starter rare" then set.Set_Name + "S"
+		else set.Set_Name
+	}
+
+	###################################################################################
+	#Card Background and Blending scripts
+
+	initialBackground := {
+		if card_background_count_2(card.background) == 0 and (isCharacter() or isAlternate()) then
+			"autobot"
+		else if card_background_count_2(card.background) == 0 then
+			"normal"
+		else if card_background_count_2(card.background) > 1 and chosen(choice:"normal", input:card.background) then
+			remove_choice(choice: "normal", card.background)
+		else if chosen(choice:"hybrid", input:card.background) then (
+			card.background
+		) else if card_background_count(card.background) > 1 and chosen(choice:"hybrid", input:card.background) != "true" then
+			exclusive_choice(
+				choice1: "normal",
+				choice2: "autobot",
+				choice3: "decepticon",
+				choice4: "mercenary",
+				choice5: "unicron",
+				choice6: "maximal",
+				choice7: "predacon",
+				input:card.background)
+		else card.background
+	}
+
+	card_background_count := count_chosen@(choices: "autobot,decepticon,mercenary,unicron,maximal,predacon")
+	card_background_count_2 := count_chosen@(choices: "normal,autobot,decepticon,mercenary,unicron,maximal,predacon")
+
+	battlecard_blend := {
+		if chosen(choice:"hybrid", input:card.background) and card_background_count(card.background) >= 2 then (
+			backgrounds:= split_text(match: ", ", card.background, include_empty:false)
+			masked_blend(light: "battlecard_"+backgrounds[0]+".png", dark: "battlecard_"+backgrounds[1]+".png", mask: "battlecard_blend_mask.png")
+		) else (
+			default := (
+				exclusive_choice(choice1: "normal",choice2: "autobot",choice3: "decepticon",choice4: "mercenary",choice5: "unicron",choice6: "maximal",choice7: "predicon", input:remove_choice(choice: "hybrid", card.background))
+			)
+			"battlecard_"+default+".png"
+		)
+	}
+
+	character_blend := {
+		if chosen(choice:"hybrid", input:card.background) and card_background_count(card.background) >= 2 then (
+			backgrounds:= split_text(match: ", ", card.background, include_empty:false)
+			masked_blend(light: "character_"+backgrounds[0]+".png", dark: "character_"+backgrounds[1]+".png", mask: "character_blend_mask.png")
+		) else (
+			default := (
+				exclusive_choice(choice1: "normal",choice2: "autobot",choice3: "decepticon",choice4: "mercenary",choice5: "unicron",choice6: "maximal",choice7: "predicon", input:remove_choice(choice: "hybrid", card.background))
+			)
+			"character_"+default+".png"
+		)
+	}

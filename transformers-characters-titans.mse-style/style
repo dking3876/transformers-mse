@@ -1,0 +1,288 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Titan Frame
+short name: titan
+icon: card-sample.jpg
+installer group: transformers/characters/titans
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 1050
+card height: 1500
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "character" }
+
+	getTitanTextBackground := {
+		if card.background == "autobot" then "titan_theme_text_background_autobot.png"
+		else if card.background == "decepticon" then "titan_theme_text_background_decepticon.png"
+		else if card.background == "mercenary" then "titan_theme_text_background_mercenary.png"
+		else if card.background == "unicron" then "titan_theme_text_background_unicron.png"
+		else if card.background == "maximal" then "titan_theme_text_background_maximal.png"
+		else if card.background == "predacon" then "titan_theme_text_background_predacon.png"
+		else "titan_theme_text_background_mercenary.png"
+	}
+
+	getTitanIconBackground := {
+		if card.background == "autobot" then "titan_theme_icon_background_autobot.png"
+		else if card.background == "decepticon" then "titan_theme_icon_background_decepticon.png"
+		else if card.background == "mercenary" then "titan_theme_icon_background_mercenary.png"
+		else if card.background == "unicron" then "titan_theme_icon_background_unicron.png"
+		else if card.background == "maximal" then "titan_theme_icon_background_maximal.png"
+		else if card.background == "predacon" then "titan_theme_icon_background_predacon.png"
+		else "titan_theme_icon_background_mercenary.png"
+	}
+
+	getModeFrame := {
+		if card.card_mode == "bot mode minicon" then "card_frame_alt_minicon_2.png"
+		else if card.card_mode == "alt mode minicon" then "card_frame_alt_minicon_1.png"
+		else if isTripleChanger() then "card_frame_alt_2.png"
+		else if (isBattleMaster() or isWeaponizer()) then "card_frame_alt_none.png"
+		else if (card.card_mode == "head mode" or card.card_mode == "limb mode") then "card_frame_alt_none.png"
+		else "card_frame_alt.png"
+	}
+
+#Include common frame components...
+include file: /transformers-common.mse-include/characters
+
+card style:
+	name:
+		top: 0
+		height: 100
+		width: { max(100,length(card.name)*40) }
+	cybertron:
+		left: 930
+	subtitle:
+		top: 50
+		left: { card_style.name.right }
+	card_text:
+		left:	{ if isTripleChanger() then "245" else "145" }
+		top:	{ 1190 }
+		width:	{ if isTripleChanger() then "550" else "650" }
+		height:	{ 210 }
+	attack:
+		top: 1100
+		left: 150
+	card_mode_text:
+		top: 1133
+		left: 340
+		z index: 1
+		visible: true
+		alignment: center middle shrink-overflow
+		font:
+			name: Catamaran
+			size: 16
+			scale down to: 8
+			weight: bold
+			color: rgb(255,255,255)
+	card_mode:
+		top: 1133
+		left: 340
+	hit_points:
+		top: 1100
+	defense:
+		top: 1100
+		left: 775
+	alt_card_mode:
+		left:	820
+		top:	1193
+		width:	65
+		height:	30
+	alt_attack:
+		left:	815
+		top:	1235
+		width:	36
+		height:	36
+	alt_defense:
+		left:	815
+		top:	1275
+		width:	36
+		height:	36
+	alt_card_mode_2:
+		left:	145
+		top:	1196
+		width:	65
+		height:	30
+	alt_attack_2:
+		left:	145
+		top:	1238
+		width:	36
+		height:	36
+	alt_defense_2:
+		left:	145
+		top:	1278
+		width:	36
+		height:	36
+
+
+	# The Master Traits icons...
+	master_traits:
+		top: 0
+		left: 825
+		height: 900
+		width: 225
+	# Trait 1
+	trait_icon_background_1:
+		top: 	{ 277 }
+		left: 	{ 788 }
+		height: { 88 }
+		width:	{ 88 }
+		angle: 45
+		render style: image
+		choice images:
+			background: { getTitanIconBackground() }
+		visible: { card.trait_icon_1 != "none" }
+		z index: -2
+	trait_text_background_1:
+		top: 	{ 222 }
+		left:	{ 852 }
+		angle: 45
+		width:	{ 600 }
+		height:	{ 92 }
+		z index: -3
+		render style: image
+		choice images:
+			background: { getTitanTextBackground() }
+		visible: { card.trait_icon_1 != "none" }
+	trait_icon_1:
+		top:	{ 253 }
+		left:	{ 825 }
+		width:	48
+		height:	48
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_1 != "none" }
+	trait_text_1:
+		top:	{ 233 }
+		left:	{ 865 }
+		angle: 45
+		width: 	{ 298 }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 20
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_1 != "none" }
+
+	# Trait 2
+	trait_icon_background_2:
+		top: 	{ 277 + 150 }
+		left: 	{ 788 }
+		height: { 88 }
+		width:	{ 88 }
+		angle: 45
+		render style: image
+		choice images:
+			background: { getTitanIconBackground() }
+		visible: { card.trait_icon_2 != "none" }
+		z index: -2
+	trait_text_background_2:
+		top: 	{ 222 + 150 }
+		left:	{ 852 }
+		angle: 45
+		width:	{ 600 }
+		height:	{ 92 }
+		z index: -3
+		render style: image
+		choice images:
+			background: { getTitanTextBackground() }
+		visible: { card.trait_icon_2 != "none" }
+	trait_icon_2:
+		top:	{ 253 + 150 }
+		left:	{ 825 }
+		width:	48
+		height:	48
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_2 != "none" }
+	trait_text_2:
+		top:	{ 233 + 150 }
+		left:	{ 865 }
+		angle: 45
+		width: 	{ 298 }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 20
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_2 != "none" }
+
+	# Trait 3
+	trait_icon_background_3:
+		top: 	{ 277 + 300 }
+		left: 	{ 788 }
+		height: { 88 }
+		width:	{ 88 }
+		angle: 45
+		render style: image
+		choice images:
+			background: { getTitanIconBackground() }
+		visible: { card.trait_icon_3 != "none" }
+		z index: -2
+	trait_text_background_3:
+		top: 	{ 222 + 300 }
+		left:	{ 852 }
+		angle: 45
+		width:	{ 600 }
+		height:	{ 92 }
+		z index: -3
+		render style: image
+		choice images:
+			background: { getTitanTextBackground() }
+		visible: { card.trait_icon_3 != "none" }
+	trait_icon_3:
+		top:	{ 253 + 300 }
+		left:	{ 825 }
+		width:	48
+		height:	48
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_3 != "none" }
+	trait_text_3:
+		top:	{ 233 + 300 }
+		left:	{ 865 }
+		angle: 45
+		width: 	{ 298 }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 20
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_3 != "none" }
+
+extra card style:
+	alt_card_frame:
+		top: 0
+		left: 0
+		height: 1500
+		width: 1050
+		render style: image
+		z index: -2
+		choice images:
+			normal: { getModeFrame() }
+		visible: { if hideAltBox() then "false" else "true" }

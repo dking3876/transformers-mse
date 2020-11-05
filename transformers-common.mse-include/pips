@@ -1,0 +1,230 @@
+#Pips...
+choice:
+	name: none
+choice:
+	name: black
+	choice:	black
+	choice: aerialbot
+	choice: air strike patrol
+	choice: battle master
+	choice: battle patrol
+	choice: beast
+	choice: boat
+	choice: car
+	choice: constructicon
+	choice: dinobot
+	choice: dreadwing
+	choice: firecon
+	choice: guardian
+	choice: helicopter
+	choice: insecticon
+	choice: leader
+	choice: melee
+	choice: mini-cassette
+	choice: motorcycle
+	choice: off-road patrol
+	choice: omnibot
+	choice: planet
+	choice: plane
+	choice: predacon
+	choice: ranged
+	choice: rescue patrol
+	choice: sentinel
+	choice: spaceship
+	choice: specialist
+	choice: sports car patrol
+	choice: spy patrol
+	choice: stunticon
+	choice: tank
+	choice: titan
+	choice: truck
+	choice: weaponizer
+	choice: minicon
+	choice: seacon
+	choice: technobot
+	choice: titan master
+	choice: wrecker
+choice:
+	name: blue
+	choice: blue
+	choice: aerialbot
+	choice: air strike patrol
+	choice: battle master
+	choice: battle patrol
+	choice: beast
+	choice: boat
+	choice: car
+	choice: constructicon
+	choice: dinobot
+	choice: dreadwing
+	choice: firecon
+	choice: guardian
+	choice: helicopter
+	choice: insecticon
+	choice: leader
+	choice: melee
+	choice: mini-cassette
+	choice: motorcycle
+	choice: off-road patrol
+	choice: omnibot
+	choice: planet
+	choice: plane
+	choice: predacon
+	choice: ranged
+	choice: rescue patrol
+	choice: sentinel
+	choice: spaceship
+	choice: specialist
+	choice: sports car patrol
+	choice: spy patrol
+	choice: stunticon
+	choice: tank
+	choice: titan
+	choice: truck
+	choice: weaponizer
+	choice: minicon
+	choice: seacon
+	choice: technobot
+	choice: titan master
+	choice: wrecker
+choice:
+	name: green
+	choice: green
+	choice: aerialbot
+	choice: air strike patrol
+	choice: battle master
+	choice: battle patrol
+	choice: beast
+	choice: boat
+	choice: car
+	choice: constructicon
+	choice: dinobot
+	choice: dreadwing
+	choice: firecon
+	choice: guardian
+	choice: helicopter
+	choice: insecticon
+	choice: leader
+	choice: melee
+	choice: mini-cassette
+	choice: motorcycle
+	choice: off-road patrol
+	choice: omnibot
+	choice: planet
+	choice: plane
+	choice: predacon
+	choice: ranged
+	choice: rescue patrol
+	choice: sentinel
+	choice: spaceship
+	choice: specialist
+	choice: sports car patrol
+	choice: spy patrol
+	choice: stunticon
+	choice: tank
+	choice: titan
+	choice: truck
+	choice: weaponizer
+	choice: minicon
+	choice: seacon
+	choice: technobot
+	choice: titan master
+	choice: wrecker
+choice:
+	name: orange
+	choice: orange
+	choice: aerialbot
+	choice: air strike patrol
+	choice: battle master
+	choice: battle patrol
+	choice: beast
+	choice: boat
+	choice: car
+	choice: constructicon
+	choice: dinobot
+	choice: dreadwing
+	choice: firecon
+	choice: guardian
+	choice: helicopter
+	choice: insecticon
+	choice: leader
+	choice: melee
+	choice: mini-cassette
+	choice: motorcycle
+	choice: off-road patrol
+	choice: omnibot
+	choice: planet
+	choice: plane
+	choice: predacon
+	choice: ranged
+	choice: rescue patrol
+	choice: sentinel
+	choice: spaceship
+	choice: specialist
+	choice: sports car patrol
+	choice: spy patrol
+	choice: stunticon
+	choice: tank
+	choice: titan
+	choice: truck
+	choice: weaponizer
+	choice: minicon
+	choice: seacon
+	choice: technobot
+	choice: titan master
+	choice: wrecker
+choice:
+	name: white
+	choice: white
+	choice: aerialbot
+	choice: air strike patrol
+	choice: battle master
+	choice: battle patrol
+	choice: beast
+	choice: boat
+	choice: car
+	choice: constructicon
+	choice: dinobot
+	choice: dreadwing
+	choice: firecon
+	choice: guardian
+	choice: helicopter
+	choice: insecticon
+	choice: leader
+	choice: melee
+	choice: mini-cassette
+	choice: motorcycle
+	choice: off-road patrol
+	choice: omnibot
+	choice: planet
+	choice: plane
+	choice: predacon
+	choice: ranged
+	choice: rescue patrol
+	choice: sentinel
+	choice: spaceship
+	choice: specialist
+	choice: sports car patrol
+	choice: spy patrol
+	choice: stunticon
+	choice: tank
+	choice: titan
+	choice: truck
+	choice: weaponizer
+	choice: minicon
+	choice: seacon
+	choice: technobot
+	choice: titan master
+	choice: wrecker
+choice:
+	name: hybrid
+	choice: white/orange
+	choice: white/black
+	choice: white/blue
+	choice: white/green
+	choice: orange/black
+	choice: orange/blue
+	choice: orange/green
+	choice: black/blue
+	choice: black/green
+	choice: blue/green

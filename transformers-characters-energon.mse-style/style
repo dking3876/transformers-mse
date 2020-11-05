@@ -1,0 +1,287 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Energon Edition Frame
+short name: energon
+icon: card-sample.jpg
+installer group: transformers/characters/energon
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 1050
+card height: 1500
+card dpi: 300
+
+
+init script:
+	assign_card_type := { "character" }
+	invert_symbol := { input }
+	character_blend := {
+		default := ( if card.background == "" or card.background == "normal" then "autobot" else card.background )
+
+		if card_background_count(card.background) >= 2 then (
+			if chosen(choice:"autobot", input:card.background) then (
+				blend_1 := "character_autobot.png"
+				if chosen(choice:"decepticon", input:card.background) then blend_2 := "character_decepticon.png"
+				else if chosen(choice:"mercenary", input:card.background) then blend_2 := "character_mercenary.png"
+				else if chosen(choice:"unicron", input:card.background) then blend_2 := "character_unicron.png"
+				else if chosen(choice:"maximal", input:card.background) then blend_2 := "character_maximal.png"
+				else if chosen(choice:"predacon", input:card.background) then blend_2 := "character_predacon.png"
+				else blend_2 := "character_decepticon.png"
+			) else if chosen(choice:"decepticon", input:card.background) then (
+				blend_1 := "character_decepticon.png"
+				if chosen(choice:"mercenary", input:card.background) then blend_2 := "character_mercenary.png"
+				else if chosen(choice:"unicron", input:card.background) then blend_2 := "character_unicron.png"
+				else if chosen(choice:"maximal", input:card.background) then blend_2 := "character_maximal.png"
+				else if chosen(choice:"predacon", input:card.background) then blend_2 := "character_predacon.png"
+				else blend_2 := "character_mercenary.png"
+			) else if chosen(choice:"mercenary", input:card.background) then (
+				blend_1 := "character_mercenary.png"
+				if chosen(choice:"unicron", input:card.background) then blend_2 := "character_unicron.png"
+				else if chosen(choice:"maximal", input:card.background) then blend_2 := "character_maximal.png"
+				else if chosen(choice:"predacon", input:card.background) then blend_2 := "character_predacon.png"
+				else blend_2 := "character_unicron.png"
+			) else if chosen(choice:"unicron", input:card.background) then (
+				blend_1 := "character_unicron.png"
+				if chosen(choice:"maximal", input:card.background) then blend_2 := "character_maximal.png"
+				else if chosen(choice:"predacon", input:card.background) then blend_2 := "character_predacon.png"
+				else blend_2 := "character_maximal.png"
+			) else if chosen(choice:"maximal", input:card.background) then (
+				blend_1 := "character_maximal.png"
+				if chosen(choice:"predacon", input:card.background) then blend_2 := "character_predacon.png"
+				else blend_2 := "character_predacon.png"
+			)
+			if isBotMode() then (
+				masked_blend(light: blend_1, dark: blend_2, mask: "character_blend_mask.png")
+			) else (
+				flip_horizontal(masked_blend(light: blend_1, dark: blend_2, mask: "character_blend_mask.png"))
+			)
+		) else (
+			if isBotMode() then (
+				"character_"+default+".png"
+			) else (
+				flip_horizontal("character_"+default+".png")
+			)
+		)
+	}
+
+# Styling Field...
+styling field:
+	type: boolean
+	name: underlayer
+	initial: no
+	description: Use an underlayer to add fade to black over artwork?
+
+################################################################################### Include common frame components...
+include file: /transformers-common.mse-include/characters
+
+################################################################################### Unique Card fields
+card style:
+	background image:
+		mask: script: if isBotMode() then invert_image("character_artwork_mask.png") else flip_horizontal(invert_image("character_artwork_mask.png"))
+	background:
+		mask: script: if isBotMode() then invert_image("character_artwork_mask.png") else flip_horizontal(invert_image("character_artwork_mask.png"))
+	name:
+		top: 32
+		left: script: if isBotMode()  then "170" else (1050-170-460)
+		alignment: script: if isBotMode() then "middle left" else "middle right"
+		width: 460
+	cybertron:
+		top: 18
+		left: script: if isBotMode()  then "643" else (1050-643-38)
+		height: 38
+		width: 38
+		alignment: script: if isBotMode() then "middle right" else "middle left"
+		visible: true
+	subtitle:
+		left: script: if isBotMode()  then "170" else (1050-170-410)
+		alignment: script: if isBotMode() then "middle left" else "middle right"
+		width: 410
+################################################################################### Traits
+	master_traits:
+		top: 0
+		left: script: if isBotMode()  then "690" else (1050-788-138)-42
+		height: 150
+		width: 250
+	trait_icon_1:
+		top: 0
+		left: script: if isBotMode()  then "788" else (1050-788-138)-42
+		height: 42
+		width: 42
+		z index: 3
+	trait_icon_2:
+		top: 55
+		left: script: if isBotMode()  then "740" else (1050-740-138)-42
+		height: 42
+		width: 42
+		z index: 3
+	trait_icon_3:
+		top: 110
+		left: script: if isBotMode()  then "690" else (1050-690-138)-42
+		height: 42
+		width: 42
+		z index: 3
+	trait_text_1:
+		top: 0
+		left: { card_style.trait_icon_1.right }
+		z index: 3
+	trait_text_2:
+		top: 55
+		left: { card_style.trait_icon_2.right }
+		z index: 3
+	trait_text_3:
+		top: 110
+		left: { card_style.trait_icon_3.right }
+		z index: 3
+
+################################################################################### Text Box
+	attack:
+		top: 1150
+		left: script: if isBotMode()  then "85" else (1050-85-72)-72
+		height: 72
+		width: 72
+	hit points:
+		top: 1240
+		left: script: if isBotMode()  then "85" else (1050-85-72)-72
+		height: 72
+		width: 72
+	defense:
+		top: 1330
+		left: script: if isBotMode()  then "85" else (1050-85-72)-72
+		height: 72
+		width: 72
+	card text:
+		top: 1150
+		left: script: if isBotMode()  then "262" else (1050-262-708)
+		height: 218
+		width: { 708 }
+		font:
+			color: rgb(255,255,255)
+
+################################################################################### Hide the unneeded aspects...
+	trait_icon_background_1:
+		visible: false
+		choice images:
+			background: /transformers-common.mse-include/pip_none.png
+	trait_text_background_1:
+		visible: false
+		choice images:
+			background: /transformers-common.mse-include/pip_none.png
+	trait_icon_background_2:
+		visible: false
+		choice images:
+			background: /transformers-common.mse-include/pip_none.png
+	trait_text_background_2:
+		visible: false
+		choice images:
+			background: /transformers-common.mse-include/pip_none.png
+	trait_icon_background_3:
+		visible: false
+		choice images:
+			background: /transformers-common.mse-include/pip_none.png
+	trait_text_background_3:
+		visible: false
+		choice images:
+			background: /transformers-common.mse-include/pip_none.png
+	card_mode:
+		top: 1390
+		left: script: if isBotMode() then "528" else (1050-528-card_style.card_mode.width)
+		font:
+			size: -1
+		visible: true
+	alt_card_mode:
+		height: 0
+		width: 0
+		visible: false
+	alt_attack:
+		height: 0
+		width: 0
+		visible: false
+	alt_defense:
+		height: 0
+		width: 0
+		visible: false
+	card_mode_text:
+		height: 0
+		width: 0
+		visible: false
+################################################################################### Exta Card Fields
+extra card field:
+	type: choice
+	name: attack_icon
+	editable: false
+	save value: false
+	choice: default
+extra card field:
+	type: choice
+	name: health_icon
+	choice: default
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: defense_icon
+	choice: default
+	editable: false
+	save value: false
+extra card field:
+	type: choice
+	name: underlay layer
+	choice: normal
+	editable: false
+
+################################################################################### Exta Card Styles
+extra card style:
+	attack_icon:
+		top:	{ card_style.attack.top }
+		left:	{ card_style.attack.right }
+		height:	72
+		width:	72
+		z index: 3
+		render style: image
+		choice images:
+			default: script: invert_symbol("/transformers-symbols.mse-symbol-font/icon_attack.png")
+	health_icon:
+		top:	{ card_style.hit_points.top }
+		left:	{ card_style.hit_points.right }
+		height:	72
+		width:	72
+		z index: 3
+		render style: image
+		choice images:
+			default: script: invert_symbol("/transformers-symbols.mse-symbol-font/icon_health.png")
+	defense_icon:
+		top:	{ card_style.defense.top }
+		left:	{ card_style.defense.right }
+		height:	72
+		width:	72
+		z index: 3
+		render style: image
+		choice images:
+			default: script: invert_symbol("/transformers-symbols.mse-symbol-font/icon_defense.png")
+	alt_card_frame:
+		top: 0
+		left: 0
+		height: 0
+		width: 0
+		render style: image
+		z index: -2
+		choice images:
+			normal: ""
+		visible: false
+	underlay layer:
+		left: 0
+		top : 0
+		width: { if styling.underlayer=="no" then 0 else 1050 }
+		height: { if styling.underlayer=="no" then 0 else 1500 }
+		z index: -3
+		render style: image
+		choice images:
+			normal: { if styling.underlayer != "none" then "/transformers-common.mse-include/underlayer.png" }
+		visible: { if styling.underlayer=="no" then "false" else "true" }

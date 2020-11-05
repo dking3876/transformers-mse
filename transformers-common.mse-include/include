@@ -1,0 +1,18 @@
+﻿mse version: 2.1.1
+short name: common files
+full name: Transformers TCG Common Files
+installer group: transformers/game files/common
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+
+# This file doesn't do anything, other files in this directory can be included
+# in game/style files:
+#	characters:	Provides general design of all character cards, to be modified by each sub-style
+#	battlecards:	Provides general design of all battle cards, to be modified by each sub-style
+#	themes:		Provides the full list of the themese for reference
+#	pips:		Provides the full list of the pips for reference

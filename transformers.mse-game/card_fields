@@ -1,0 +1,759 @@
+###############################################################################################
+# Card fields
+# Background Images
+card field:
+	type: choice
+	name: card type
+	save value: true
+	card list visible: true
+	editable: false
+	show statistics: true
+	choice: none
+	choice: action
+	choice: character
+	choice: location
+	choice: planet
+	choice: secret action
+	choice: stratagem
+	choice: upgrade
+	script:
+		stylesheet		# indicate that this value should be updated when the stylesheet changes
+		assign_card_type()	# determined by the style
+card field:
+	type: image
+	name: background image
+card field:
+	type: multiple choice
+	name: background
+	choice:
+		name: normal
+		enabled: { if isCharacter() or isAlternate() then "false" else "true" }
+	choice: autobot
+	choice: decepticon
+	choice: mercenary
+	choice: unicron
+	choice: maximal
+	choice: 
+		name: predacon
+		line below: true
+	choice:
+		name: custom
+		enabled: { if enableCustom() then "true" }
+		line below: true
+	choice:
+		name: hybrid
+		type: radio
+	show statistics: false
+	card list visible: false
+	editable: true
+	script:
+		stylesheet		# indicate that this value should be updated when the stylesheet changes
+		initialBackground()	# Set the default background depending on what card type we are...
+card field:
+	type: text
+	name: card_faction
+	save value: true
+	card list visible: true
+	editable: false
+	show statistics: false
+	script: determine_faction()
+###############################################################################################
+#Top Line
+
+card field:
+	type: text
+	name: name
+	script: to_upper_symbol(value)
+	identifying: true
+	show statistics: false
+	card list visible: true
+	card list column: 2
+	description: The name of the card
+card field:
+	type: text
+	name: cybertron
+	script: cybertron_filter(forward_editor(field: card.name))
+	show statistics: false
+	card list visible: false
+	editable: false
+card field:
+	type: text
+	name: subtitle
+	script: to_upper_symbol(value)
+	show statistics: false
+	card list visible: true
+	card list column: 3
+	description: The subtitle for the card
+
+###############################################################################################
+#Traits
+card field:
+	type: multiple choice
+	name: master_traits
+	include file: /transformers-common.mse-include/themes
+#Trait #1
+card field:
+	type: choice
+	name: trait_icon_1
+	include file: /transformers-common.mse-include/themes
+	show statistics: false
+	card list visible: false
+	description: Trait Icon 1
+	script:
+		traitlist := split_text(match: ", ", card.master_traits, include_empty:false)
+		traitlist := sort_list(input:traitlist,order_by:theme_sort)
+		if length(traitlist) >= 1 then trim(traitlist[0]) else "none"
+	editable: false
+card field:
+	type: choice
+	name: trait_icon_background_1
+	show statistics: false
+	card list visible: false
+	description: Trait Background 1
+	choice: background
+	editable: false
+card field:
+	type: choice
+	name: trait_text_background_1
+	show statistics: false
+	card list visible: false
+	description: Trait Background 1
+	choice: background
+	editable: false
+card field:
+	type: text
+	name: trait_text_1
+	script: trait_names(input: card.trait_icon_1)
+	show statistics: false
+	card list visible: false
+	description: Trait Text 1
+	editable: false
+#Trait 2
+card field:
+	type: choice
+	name: trait_icon_2
+	include file: /transformers-common.mse-include/themes
+	show statistics: false
+	card list visible: false
+	description: Trait Icon 2
+	script:
+		traitlist := split_text(match: ", ", card.master_traits, include_empty:false)
+		traitlist := sort_list(input:traitlist,order_by:theme_sort)
+		if length(traitlist) >= 2 then trim(traitlist[1]) else "none"
+	editable: false
+card field:
+	type: choice
+	name: trait_text_background_2
+	show statistics: false
+	card list visible: false
+	description: Trait Background 2
+	choice: background
+	editable: false
+card field:
+	type: choice
+	name: trait_icon_background_2
+	show statistics: false
+	card list visible: false
+	description: Trait Background 2
+	choice: background
+	editable: false
+card field:
+	type: text
+	name: trait_text_2
+	script: trait_names(input: card.trait_icon_2)
+	show statistics: false
+	card list visible: false
+	description: Trait Text 2
+	editable: false
+#Trait 3
+card field:
+	type: choice
+	name: trait_icon_3
+	include file: /transformers-common.mse-include/themes
+	show statistics: false
+	card list visible: false
+	description: Trait Icon 3
+	script:
+		traitlist := split_text(match: ", ", card.master_traits, include_empty:false)
+		traitlist := sort_list(input:traitlist,order_by:theme_sort)
+		if length(traitlist) >= 3 then trim(traitlist[2]) else "none"
+	editable: false
+card field:
+	type: choice
+	name: trait_text_background_3
+	show statistics: false
+	card list visible: false
+	description: Trait Background 3
+	choice: background
+	editable: false
+card field:
+	type: choice
+	name: trait_icon_background_3
+	show statistics: false
+	card list visible: false
+	description: Trait Background 3
+	choice: background
+	editable: false
+card field:
+	type: text
+	name: trait_text_3
+	script: trait_names(input: card.trait_icon_3)
+	show statistics: false
+	card list visible: false
+	description: Trait Text 3
+	editable: false
+###############################################################################################
+#Traits for Split/combiner Cards
+card field:
+	type: multiple choice
+	name: master_traits_2
+	include file: /transformers-common.mse-include/themes
+card field:
+	type: choice
+	name: trait_icon_1b
+	include file: /transformers-common.mse-include/themes
+	show statistics: false
+	card list visible: false
+	description: Trait Icon 1
+	editable: false
+	script:
+		traitlist := split_text(match: ", ", card.master_traits_2, include_empty:false)
+		traitlist := sort_list(input:traitlist,order_by:theme_sort)
+		if length(traitlist) >= 1 then trim(traitlist[0]) else "none"
+card field:
+	type: choice
+	name: trait_icon_background_1b
+	show statistics: false
+	card list visible: false
+	description: Trait Background 1
+	choice: background
+	editable: false
+card field:
+	type: choice
+	name: trait_text_background_1b
+	show statistics: false
+	card list visible: false
+	description: Trait Background 1
+	choice: background
+	editable: false
+card field:
+	type: text
+	name: trait_text_1b
+	script: trait_names(input: card.trait_icon_1b)
+	show statistics: false
+	card list visible: false
+	description: Trait Text 1
+	editable: false
+card field:
+	type: choice
+	name: trait_icon_2b
+	include file: /transformers-common.mse-include/themes
+	show statistics: false
+	card list visible: false
+	description: Trait Icon 2
+	editable: false
+	script:
+		traitlist := split_text(match: ", ", card.master_traits_2, include_empty:false)
+		traitlist := sort_list(input:traitlist,order_by:theme_sort)
+		if length(traitlist) >= 2 then trim(traitlist[1]) else "none"
+card field:
+	type: choice
+	name: trait_icon_background_2b
+	show statistics: false
+	card list visible: false
+	description: Trait Background 2
+	choice: background
+	editable: false
+card field:
+	type: choice
+	name: trait_text_background_2b
+	show statistics: false
+	card list visible: false
+	description: Trait Background 2
+	choice: background
+	editable: false
+card field:
+	type: text
+	name: trait_text_2b
+	script: trait_names(input: card.trait_icon_2b)
+	show statistics: false
+	card list visible: false
+	description: Trait Text 2
+	editable: false
+card field:
+	type: choice
+	name: trait_icon_3b
+	include file: /transformers-common.mse-include/themes
+	show statistics: false
+	card list visible: false
+	description: Trait Icon 3
+	editable: false
+	script:
+		traitlist := split_text(match: ", ", card.master_traits_2, include_empty:false)
+		traitlist := sort_list(input:traitlist,order_by:theme_sort)
+		if length(traitlist) >= 3 then trim(traitlist[2]) else "none"
+card field:
+	type: choice
+	name: trait_icon_background_3b
+	show statistics: false
+	card list visible: false
+	description: Trait Background 3
+	choice: background
+	editable: false
+card field:
+	type: choice
+	name: trait_text_background_3b
+	show statistics: false
+	card list visible: false
+	description: Trait Background 3
+	choice: background
+	editable: false
+card field:
+	type: text
+	name: trait_text_3b
+	script: trait_names(input: card.trait_icon_3b)
+	show statistics: false
+	card list visible: false
+	description: Trait Text 3
+	editable: false
+#####################################################################
+#Right Side; Pips for Upgrades, Battlecards
+card field:
+	#type: multiple choice
+	type: text
+	name: master_pip
+	show statistics: true
+	editable: true
+	description: Master Pip Selection
+	script: card.pip_one + "," + card.pip_two + "," + card.pip_three
+
+card field:
+	type: choice
+	name: pip_one
+	include file: /transformers-common.mse-include/pips
+	show statistics: true
+	description: Pip 1
+	editable: true
+card field:
+	type: choice
+	name: pip_one_a
+	include file: /transformers-common.mse-include/pips
+	show statistics: false
+	card list visible: false
+	description: Pip 1
+	editable: false
+	script:
+		piplist := split_text(match: ",", card.master_pip, include_empty:false)
+		piplist := sort_list(input:piplist,order_by:pip_sort)
+		if length(piplist) >= 1 then trim(piplist[0]) else "none"
+
+
+card field:
+	type: choice
+	name: pip_two
+	include file: /transformers-common.mse-include/pips
+	show statistics: true
+	description: Pip 2
+	editable: true
+card field:
+	type: choice
+	name: pip_two_a
+	include file: /transformers-common.mse-include/pips
+	show statistics: false
+	card list visible: false
+	description: Pip 2
+	editable: false
+	script:
+		piplist := split_text(match: ",", card.master_pip, include_empty:false)
+		piplist := sort_list(input:piplist,order_by:pip_sort)
+		if length(piplist) >= 2 then trim(piplist[1]) else "none"
+card field:
+	type: choice
+	name: pip_three
+	include file: /transformers-common.mse-include/pips
+	show statistics: true
+	description: Pip 3
+	editable: true
+card field:
+	type: choice
+	name: pip_three_a
+	include file: /transformers-common.mse-include/pips
+	show statistics: false
+	card list visible: false
+	description: Pip 3
+	editable: false
+	script:
+		piplist := split_text(match: ",", card.master_pip, include_empty:false)
+		piplist := sort_list(input:piplist,order_by:pip_sort)
+		if length(piplist) >= 3 then trim(piplist[2]) else "none"
+#####################################################################
+#Card Image
+
+card field:
+	type: image
+	name: image
+	show statistics: false
+	description: The image of the card
+card field:
+	type: image
+	name: image_2
+	show statistics: false
+	description: The second image of the card, for combiner-framed cards
+
+#####################################################################
+#Center Bar
+card field:
+	type: text
+	name: attack
+	show statistics: true
+	description: Offensive Power (Attack)
+	editable: true
+card field:
+	type: choice
+	name: card_mode
+	choice:
+		name: bot mode
+		choice: normal
+		choice: battle master
+		choice: bot 1
+		choice: bot 2
+		choice: drone
+		choice: minicon
+		choice: triple changer
+		choice: weaponizer
+	choice:
+		name: alt mode
+		choice: normal
+		choice: alt 1
+		choice: alt 2
+		choice: body
+		choice: drone
+		choice: minicon
+	choice: head mode
+	choice: limb mode
+	choice: body mode
+	choice:
+		name: combiner mode
+		choice: normal
+		choice: team
+	choice:
+		name: human
+		choice: normal
+		choice: rider
+	choice:
+		name: team mode
+		choice: normal
+		choice: combiner
+	choice: character mode
+	choice: unit mode
+	editable: true
+	show statistics: true
+card field:
+	type: text
+	name: card_mode_text
+	script: to_upper(determine_mode_text(input: card.card_mode))
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: hit_points
+	show statistics: true
+	description: Character Hit Points
+	editable: true
+card field:
+	type: text
+	name: defense
+	show statistics: true
+	description: Defensive Power (Defense)
+	editable: true
+#####################################################################
+#Center Bar 2 for Triple Changers
+card field:
+	type: text
+	name: attack_2
+	show statistics: true
+	description: Offensive Power (Attack) for Second Side
+	script: forward_editor(field: card.alt_attack)
+	editable: true
+card field:
+	type: choice
+	name: card_mode_2
+	choice:
+		name: bot mode
+		choice: normal
+		choice: battle master
+		choice: drone
+		choice: minicon
+		choice: triple changer
+		choice: weaponizer
+	choice:
+		name: alt mode
+		choice: normal
+		choice: alt 1
+		choice: alt 2
+		choice: body
+		choice: drone
+		choice: minicon
+	choice: head mode
+	choice: limb mode
+	choice: body mode
+	choice:
+		name: combiner mode
+		choice: normal
+		choice: team
+	choice:
+		name: team mode
+		choice: normal
+		choice: combiner
+	choice: character mode
+	choice: unit mode
+	editable: true
+	show statistics: true
+card field:
+	type: text
+	name: card_mode_text_2
+	script: to_upper(determine_mode_text(input: card.card_mode_2))
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: hit_points_2
+	show statistics: true
+	description: Character Hit Points
+	script: forward_editor(field: card.hit_points)
+	editable: true
+card field:
+	type: text
+	name: defense_2
+	show statistics: true
+	description: Defensive Power (Defense) for Second Side
+	script: forward_editor(field: card.alt_defense)
+	editable: true
+#####################################################################
+#Upgrade Sub-Types for Upgrades
+card field:
+	type: choice
+	name: upgrade_subtype
+	script: trait_names(value)
+	choice: armor
+	choice: utility
+	choice: weapon
+	choice: weapon armor
+	card list visible: true
+	show statistics: true
+#####################################################################
+#Mode Box/Alt Box
+card field:
+	type: text
+	name: alt_card_mode
+	script: to_upper(determine_type(input: card.card_mode))
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: alt_attack
+	description: Alternate Offensive Power (Attack)
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: alt_defense
+	description: Alternate Defensive Power (Defense) of Alt Side
+	editable: true
+	show statistics: false
+	card list visible: false
+#####################################################################
+#Mode Box/Alt Box for Triple Changers
+card field:
+	type: text
+	name: alt_card_mode_2
+	script: to_upper(determine_type_switch())
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: alt_attack_2
+	description: Alternate Offensive Power (Attack)
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: alt_defense_2
+	description: Alternate Defensive Power (Defense)
+	editable: true
+	show statistics: false
+	card list visible: false
+#####################################################################
+#Mode Box/Alt Box for Triple Changers
+card field:
+	type: text
+	name: alt_attack_3
+	description: Alternate Offensive Power (Attack)
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: alt_defense_3
+	description: Alternate Defensive Power (Defense)
+	editable: true
+	show statistics: false
+	card list visible: false
+#####################################################################
+#Mode Box/Alt Box for Triple Changers
+card field:
+	type: text
+	name: alt_attack_4
+	description: Alternate Offensive Power (Attack)
+	script: forward_editor(field: card.alt_attack_3)
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: alt_defense_4
+	description: Alternate Defensive Power (Defense)
+	script: forward_editor(field: card.alt_defense_3)
+	editable: true
+	show statistics: false
+	card list visible: false
+#####################################################################
+#Card Text, for all cards...
+card field:
+	type: text
+	name: card_text
+	multi line: true
+	script: addText(value)
+	description: Card's Text
+	show statistics: false
+	card list visible: false
+#####################################################################
+#Upgrade Fields, Attack and Defense Boosts
+card field:
+	type: choice
+	name: upgrade_attack
+	choice: normal
+	show statistics: false
+	card list visible: false
+card field:
+	type: choice
+	name: upgrade_defense
+	choice: normal
+	show statistics: false
+	card list visible: false
+card field:
+	type: choice
+	name: upgrade_health
+	choice: normal
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: health
+	show statistics: true
+	card list visible: true
+#####################################################################
+#Bottom Line - Illustrator, Card Set, Number
+card field:
+	type: text
+	name: artist
+	default: "Illus. " + set.Artist_Name
+	description: Artist
+	show statistics: true
+	card list visible: true
+card field:
+	type: text
+	name: copyright
+	default: set.Copyright
+	description: Copyright Notice
+	show statistics: false
+	card list visible: false
+card field:
+	type: choice
+	name: set_icon
+	editable: false
+	initial: none
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: set_name
+	default: setName()
+	script: setName()
+	description: The Set's Name
+	editable: false
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: rarity text
+	script: rarity_text()
+	default: rarity_text()
+	editable: false
+	show statistics: false
+	card list visible: false
+card field:
+	type: choice
+	name: rarity
+	choice: none
+	choice: common
+	choice: uncommon
+	choice: rare
+	choice: super rare
+	choice: promo rare
+	choice: starter rare
+	choice: box set rare
+	choice: convention rare
+	initial: common
+	editable: true
+	show statistics: true
+	card list visible: true
+	sort script: sort_index() + rarity_sort() + card.collector_line_1
+card field:
+	type: text
+	name: collector_line_1
+	save value: false
+	identifying: true
+	script: getCardString(value)
+	default: getCardString(value)
+	sort script: sort_index() + rarity_sort() + card.collector_line_1
+	card list column: 1
+	editable: true
+	show statistics: false
+	card list visible: true
+card field:
+	type: text
+	name: collector_line_2
+	identifying: true
+	script: getSetString(value)
+	default: getSetString(value)
+	sort script: sort_index() + rarity_sort() + card.collector_line_1
+	card list column: 1
+	editable: true
+	show statistics: false
+	card list visible: false
+card field:
+	type: text
+	name: stars
+	script: star_filter(input: value)
+	description: Stars
+	editable: true
+	show statistics: true
+	card list visible: true
+#####################################################################
+# Custom Card Frame fields that need to be kept...
+card field:
+	type: choice
+	name: faction image
+	choice: faction
+	editable: false
+	show statistics: false
+card field:
+	type: image
+	name: custom faction image

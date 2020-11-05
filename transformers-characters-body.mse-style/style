@@ -1,0 +1,193 @@
+﻿mse version: 2.1.1
+game: transformers
+full name: Body Frame
+short name: body characters
+icon: card-sample.jpg
+installer group: transformers/characters/body characters
+position hint: 3
+
+version: 2020-08-01
+
+depends on: transformers.mse-game 2020-08-01
+depends on: transformers-common.mse-include 2020-08-01
+depends on: transformers-symbols.mse-symbol-font 2020-08-01
+depends on: transformers-star-font.mse-symbol-font 2020-08-01
+
+card background: black
+card width: 1050
+card height: 1500
+card dpi: 300
+
+#Initial Script
+init script:
+	# Card Type, can be changed in style files
+	assign_card_type := { "character" }
+
+#Include common frame components...
+include file: /transformers-common.mse-include/characters
+
+card style:
+	name:
+		top:	30
+		left:	150
+		width:	600
+		angle:	270
+	subtitle:
+		top:	30
+		left:	70
+		width:	600
+		angle:	270
+	cybertron:
+		top:	565
+		left:	175
+		width:	36
+		angle:	270
+################################################################################### Traits
+	master_traits:
+		left: 0
+		top: 642
+		width: 356
+		height: 200
+		z index: 5
+		render style: text
+		popup style: in place
+		include file: /transformers-symbols.mse-symbol-font/themes
+		font:
+			name: Nunito
+			size: -1
+			scale down to: 14
+			weight: bold
+			color: rgb(255,255,255)
+	# Trait 1
+	trait_icon_background_1:
+		left:	{ 256 }
+		top:	{ 642 }
+		height:	{ 65 }
+		width:	100
+		render style: image
+		choice images:
+			background: script: flip_horizontal("/transformers-common.mse-include/theme_background_icon.png")
+		visible: { card.trait_icon_1 != "none" }
+		z index: -2
+	trait_text_background_1:
+		left:	{ 0 }
+		top:	{ 642 }
+		width:	{ 256 }
+		height:	{ 65 }
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_1 != "none" }
+	trait_icon_1:
+		left:	{ 265 }
+		top:	{ 655 }
+		width:	{ 44 }
+		height:	{ 44 }
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_1 != "none" }
+	trait_text_1:
+		left:	{ 20 }
+		top:	{ 652 }
+		width:	{ 236 }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 12
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_1 != "none" }
+
+	# Trait 2
+	trait_icon_background_2:
+		left:	{ 256 }
+		top:	{ 704 }
+		height:	{ 65 }
+		width:	100
+		render style: image
+		choice images:
+			background: script: flip_horizontal("/transformers-common.mse-include/theme_background_icon.png")
+		visible: { card.trait_icon_2 != "none" }
+		z index: -2
+	trait_text_background_2:
+		left:	{ 0 }
+		top:	{ 704 }
+		width:	{ 256 }
+		height:	{ 65 }
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_2 != "none" }
+	trait_icon_2:
+		left:	{ 265 }
+		top:	{ 717 }
+		width:	{ 44 }
+		height:	{ 44 }
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_2 != "none" }
+	trait_text_2:
+		left:	{ 20 }
+		top:	{ 714 }
+		width:	{ 236 }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 12
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_2 != "none" }
+	# Trait 3
+	trait_icon_background_3:
+		left:	{ 256 }
+		top:	{ 766 }
+		height:	{ 65 }
+		width:	100
+		render style: image
+		choice images:
+			background: script: flip_horizontal("/transformers-common.mse-include/theme_background_icon.png")
+		visible: { card.trait_icon_3 != "none" }
+		z index: -2
+	trait_text_background_3:
+		left:	{ 0 }
+		top:	{ 766 }
+		width:	{ 256 }
+		height:	{ 65 }
+		z index: -3
+		render style: image
+		choice images:
+			background: /transformers-common.mse-include/theme_background_text.png
+		visible: { card.trait_icon_3 != "none" }
+	trait_icon_3:
+		left:	{ 265 }
+		top:	{ 779 }
+		width:	{ 44 }
+		height:	{ 44 }
+		z index: 0
+		render style: image
+		include file: /transformers-symbols.mse-symbol-font/themes
+		visible: { card.trait_icon_3 != "none" }
+	trait_text_3:
+		left:	{ 20 }
+		top:	{ 776 }
+		width:	{ 236 }
+		height:	40
+		z index: 0
+		alignment: left middle shrink-overflow
+		font:
+			name: Nunito
+			size: 16
+			scale down to: 12
+			weight: bold
+			color: rgb(255,255,255)
+		visible: { card.trait_icon_3 != "none" }

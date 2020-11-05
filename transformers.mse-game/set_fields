@@ -1,0 +1,44 @@
+###############################################################################################
+# Set fields
+set field:
+	type: text
+	name: Set Name
+	identifying: true
+set field:
+	type: text
+	name: Artist Name
+set field:
+	type: text
+	name: Copyright
+	default: "TM & © Hasbro © Wizards"
+set field:
+	type: boolean
+	name: display collector info
+	initial: yes
+set field:
+	type: boolean
+	name: use automatic numbers
+	initial: yes
+set field:
+	type: multiple choice
+	name: automatic reminder text
+	choice: Wave 1
+	choice: Wave 2
+	choice: Wave 3
+	choice: Wave 4
+	choice: Wave 5
+	choice: Custom
+	choice: combiner
+	choice: pips
+	choice: mode
+	initial: Wave 5, Custom, pips, mode
+set field:
+	type: image
+	name: set symbol
+
+default set style:
+	set_symbol:
+		height: 48
+		width: 48
+		z index: 2
+		visible: true
