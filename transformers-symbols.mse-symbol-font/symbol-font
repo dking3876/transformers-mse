@@ -102,6 +102,21 @@ symbol:
 symbol:
 	code: G
 	image: pip_green.png
+symbol:
+	code: LLEG
+	image: script: invert_symbol("leg_left.png")
+symbol:
+	code: RLEG
+	image: script: invert_symbol("leg_right.png")
+symbol:
+	code: TORSO
+	image: script: invert_symbol("torso.png")
+symbol:
+	code: LARM
+	image: script: invert_symbol("arm_left.png")
+symbol:
+	code: RARM
+	image: script: invert_symbol("arm_right.png")
 
 
 
