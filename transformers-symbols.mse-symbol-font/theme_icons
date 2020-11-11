@@ -149,3 +149,6 @@ symbol:
 symbol:
 	code: Six Clan
 	image: script: invert_symbol("theme_six_clan.png")
+symbol:
+	code: Human
+	image: script: invert_symbol("theme_human.png")

@@ -135,3 +135,6 @@ choice:
 choice:
 	name: six clan
 	enabled: { if isUpgrade() then "false" else "true" }
+choice:
+	name: human
+	enabled: { if isUpgrade() then "false" else "true" }
