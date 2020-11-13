@@ -78,9 +78,9 @@ init script:
 		) else if card.card_mode == "head mode" then (
 			text_string := input + "<atom-addedtext>\n(This begins in head mode on the alt mode of a character that has a body mode. When that character is KO'd, even if it was your last character, deploy this to the battlefield in bot mode.)</atom-addedtext>"
 		) else if card.card_mode == "human rider" then (
-			text_string := input + "<atom-addedtext>\n(This begins the game under a character in alt mode. When that character flips to bot mode deploy this to the battlefield in Human Mode. If that character is KO'd this character is also KO'd.)</atom-addedtext>"
+			text_string := input + "<atom-addedtext>\n(This begins the game under a character in alt mode. When that character flips to bot mode deploy this to the battlefield in Deployed Mode. If that character is KO'd this character is also KO'd.)</atom-addedtext>"
 		) else if card.card_mode == "human normal" then (
-			text_string := input + "<atom-addedtext>\n(Can't Flip)\n(When the character this began the game under flips to alt mode, put this back under that character in Human Rider Mode.)</atom-addedtext>"
+			text_string := input + "<atom-addedtext>\n(Can't Flip)\n(When the character this began the game under flips to alt mode, put this back under that character in Rider Mode.)</atom-addedtext>"
 		) else if card.card_mode == "limb mode" then (
 			text_string := input + "<atom-addedtext>\n(This begins in limb mode on the alt mode of a character that has a body mode. When that character is KO'd, even if it was your last character, deploy this to the battlefield in bot mode.)</atom-addedtext>"
 		) else if isBattleCard() and card.stars != "" and modeReminder() then (
@@ -558,8 +558,8 @@ init script:
 		else if input == "alt mode drone" then "alt mode"
 		else if input == "alt mode minicon" then "alt mode"
 		else if input == "head mode" then "head mode"
-		else if input == "human rider" then "human rider"
-		else if input == "human normal" then "human"
+		else if input == "human rider" then "rider"
+		else if input == "human normal" then "deployed"
 		else if input == "limb mode" then "limb mode"
 		else if input == "body mode" then "body mode"
 		else if input == "combiner mode normal" then "combiiner mode"
