@@ -141,8 +141,8 @@ symbol:
 	code: Wrecker
 	image: script: invert_symbol("theme_wrecker.png")
 symbol:
-	code: Protectabot
-	image: script: invert_symbol("theme_protectabot.png")
+	code: Protectobot
+	image: script: invert_symbol("theme_protectobot.png")
 symbol:
 	code: Terrorcon
 	image: script: invert_symbol("theme_terrorcon.png")

@@ -3,8 +3,8 @@ init script:
 	###################################################################################
 	#Some variables tied to the filter scripts...
 
-	faction_names := {"Aerialbot|Air Strike Patrol|Battle Master|Battle Patrol|Beast|Boat|Car|Constructicon|Dinobot|Dreadwing|Firecon|Guardian|Helicopter|Insecticon|Leader|Melee|Mini-cassette|Motorcycle|Off-road Patrol|Omnibot|Planet|Plane|Predacon|Ranged|Rescue Patrol|Sentinel|Spaceship|Specialist|Sports Car Patrol|Spy Patrol|Stunticon|Tank|Titan|Truck|Weaponizer|Seacon|Titan Master|Minicon|Technobot|Protectabot|Terrorcon|Six Clan|Human"}
-	faction_plural := {"Aerialbots|Air Strike Patrols|Battle Masters|Battle Patrols|Beasts|Boats|Cars|Constructicons|Dinobots|Dreadwings|Firecons|Guardians|Helicopters|Insecticons|Leaders|Melees|Mini-cassettes|Motorcycles|Off-road Patrols|Omnibots|Planets|Planes|Predacons|Ranged|Rescue Patrols|Sentinels|Spaceships|Specialists|Sports Car Patrols|Spy Patrols|Stunticons|Tanks|Titans|Trucks|Weaponizers|Seacons|Titan Masters|Minicons|Technobots|Protectabots|Terrorcons|Six Clan|Humans"}
+	faction_names := {"Aerialbot|Air Strike Patrol|Battle Master|Battle Patrol|Beast|Boat|Car|Constructicon|Dinobot|Dreadwing|Firecon|Guardian|Helicopter|Insecticon|Leader|Melee|Mini-cassette|Motorcycle|Off-road Patrol|Omnibot|Planet|Plane|Predacon|Ranged|Rescue Patrol|Sentinel|Spaceship|Specialist|Sports Car Patrol|Spy Patrol|Stunticon|Tank|Titan|Truck|Weaponizer|Seacon|Titan Master|Minicon|Technobot|Protectobot|Terrorcon|Six Clan|Human"}
+	faction_plural := {"Aerialbots|Air Strike Patrols|Battle Masters|Battle Patrols|Beasts|Boats|Cars|Constructicons|Dinobots|Dreadwings|Firecons|Guardians|Helicopters|Insecticons|Leaders|Melees|Mini-cassettes|Motorcycles|Off-road Patrols|Omnibots|Planets|Planes|Predacons|Ranged|Rescue Patrols|Sentinels|Spaceships|Specialists|Sports Car Patrols|Spy Patrols|Stunticons|Tanks|Titans|Trucks|Weaponizers|Seacons|Titan Masters|Minicons|Technobots|Protectobots|Terrorcons|Six Clan|Humans"}
 	symbols := { faction_names() }
 
 	#Assign Card Type, changed in style files to reflect the card's type based on style

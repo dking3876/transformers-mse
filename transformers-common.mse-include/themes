@@ -130,7 +130,7 @@ choice:
 	name: terrorcon
 	enabled: { if isUpgrade() then "false" else "true" }
 choice:
-	name: protectabot
+	name: protectobot
 	enabled: { if isUpgrade() then "false" else "true" }
 choice:
 	name: six clan
