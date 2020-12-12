@@ -48,4 +48,4 @@ choice images:
 	terrorcon: /transformers-symbols.mse-symbol-font/theme_terrorcon.png
 	protectobot: /transformers-symbols.mse-symbol-font/theme_protectobot.png
 	six clan: /transformers-symbols.mse-symbol-font/theme_six_clan.png
-	human: /transformers-symbols.mse-symbol-font/theme_human.png
+	organic: /transformers-symbols.mse-symbol-font/theme_organic.png

@@ -437,7 +437,7 @@ card field:
 		choice: normal
 		choice: team
 	choice:
-		name: human
+		name: organic
 		choice: normal
 		choice: rider
 	choice:
@@ -663,7 +663,7 @@ card field:
 card field:
 	type: text
 	name: artist
-	default: "Illus. " + set.Artist_Name
+	default: "" + set.Artist_Name
 	description: Artist
 	show statistics: true
 	card list visible: true
